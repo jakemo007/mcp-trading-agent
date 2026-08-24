@@ -1,0 +1,136 @@
+name: Swing Trader
+
+on:
+  schedule:
+    # Daily scan — 09:25 IST = 03:55 UTC, Mon–Fri
+    - cron: "55 3 * * 1-5"
+    # Friday report — 15:15 IST = 09:45 UTC, Friday only
+    - cron: "45 9 * * 5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (no positions written)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["true", "false"]
+
+jobs:
+  # ── Daily scan + position update ──────────────────────────────────────────────
+  scan:
+    name: Daily Scan
+    runs-on: ubuntu-latest
+    # Skip this job on the Friday report trigger (09:45 UTC)
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && contains(github.event.schedule, '55 3'))
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run scan
+        run: |
+          DRY_RUN_FLAG=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            DRY_RUN_FLAG="--dry-run"
+          fi
+          python -m swing_trader $DRY_RUN_FLAG
+
+      - name: Commit portfolio state
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/swing_portfolio.json
+          git diff --cached --quiet || git commit -m "chore: swing portfolio update $(date -u +%Y-%m-%d)"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ── Friday weekly report ──────────────────────────────────────────────────────
+  report:
+    name: Weekly Report
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' && contains(github.event.schedule, '45 9')
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0   # need full history to switch branches
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Update positions before report
+        run: |
+          python -c "
+          from swing_trader.runner import update_positions
+          update_positions()
+          "
+
+      - name: Build HTML report
+        run: |
+          python -c "
+          from datetime import date
+          from swing_trader.portfolio import load
+          from swing_trader.report import build_html, save_report
+          state = load()
+          html  = build_html(state)
+          path  = save_report(html, f'SWING-WEEKLY-{date.today().isoformat()}.html')
+          print(f'Report: {path}')
+          "
+
+      - name: Commit portfolio state to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/swing_portfolio.json
+          git diff --cached --quiet || git commit -m "chore: swing portfolio update $(date -u +%Y-%m-%d)"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push report to reports branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create orphan branch if it doesn't exist yet
+          if git ls-remote --exit-code --heads origin reports; then
+            git fetch origin reports
+            git checkout reports
+          else
+            git checkout --orphan reports
+            git rm -rf . --quiet
+          fi
+
+          # Copy reports from main's working state
+          mkdir -p data/reports
+          git checkout main -- data/reports/
+
+          git add data/reports/
+          git commit -m "report: weekly P&L $(date -u +%Y-%m-%d)"
+          git push origin reports
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Print report URL
+        run: |
+          REPO="${{ github.repository }}"
+          DATE=$(date -u +%Y-%m-%d)
+          echo "Report URL: https://github.com/${REPO}/blob/reports/data/reports/SWING-WEEKLY-${DATE}.html"
+          echo "If GitHub Pages is enabled: https://$(echo ${REPO} | cut -d/ -f1).github.io/$(echo ${REPO} | cut -d/ -f2)/data/reports/SWING-WEEKLY-${DATE}.html"

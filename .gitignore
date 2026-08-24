@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Swing trader runtime state — managed by GitHub Actions, not committed manually
+data/swing_portfolio.json
+
+# Environment
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
