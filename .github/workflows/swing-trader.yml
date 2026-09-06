@@ -38,11 +38,11 @@ jobs:
 
       - name: Run scan
         run: |
-          DRY_RUN_FLAG=""
-          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            DRY_RUN_FLAG="--dry-run"
-          fi
-          python -m swing_trader $DRY_RUN_FLAG
+          python -c "
+          from swing_trader.runner import run_daily_scan
+          dry = '${{ github.event.inputs.dry_run }}' == 'true'
+          run_daily_scan(dry_run=dry)
+          "
 
       - name: Commit portfolio state
         if: github.event.inputs.dry_run != 'true'
@@ -94,11 +94,11 @@ jobs:
           print(f'Report: {path}')
           "
 
-      - name: Commit portfolio state to main
+      - name: Commit portfolio state and report to main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/swing_portfolio.json
+          git add data/swing_portfolio.json data/reports/
           git diff --cached --quiet || git commit -m "chore: swing portfolio update $(date -u +%Y-%m-%d)"
           git push origin main
         env:
