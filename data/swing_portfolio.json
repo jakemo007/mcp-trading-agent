@@ -1,0 +1,58 @@
+{
+  "capital": 31969.61,
+  "open_positions": [
+    {
+      "id": "7995b3a3",
+      "ticker": "BPCL.NS",
+      "entry": 309.43,
+      "stop_loss": 304.53,
+      "target": 326.3500061035156,
+      "qty": 80,
+      "capital_used": 24754.4,
+      "rr": 3.45,
+      "status": "OPEN",
+      "opened_at": "2026-09-22T08:51:02.211181",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "ce4d7946",
+      "ticker": "IOC.NS",
+      "entry": 135.83,
+      "stop_loss": 134.18,
+      "target": 141.14999389648438,
+      "qty": 138,
+      "capital_used": 18744.54,
+      "rr": 3.22,
+      "status": "OPEN",
+      "opened_at": "2026-09-22T08:51:02.384397",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "791b05f9",
+      "ticker": "ONGC.NS",
+      "entry": 232.9,
+      "stop_loss": 230.58,
+      "target": 243.16000366210938,
+      "qty": 60,
+      "capital_used": 13974.0,
+      "rr": 4.42,
+      "status": "OPEN",
+      "opened_at": "2026-09-22T08:51:02.560696",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "aaa65d77",
+      "ticker": "TATAPOWER.NS",
+      "entry": 364.05,
+      "stop_loss": 360.09,
+      "target": 377.6499938964844,
+      "qty": 29,
+      "capital_used": 10557.45,
+      "rr": 3.43,
+      "status": "OPEN",
+      "opened_at": "2026-09-22T08:51:02.894826",
+      "unrealised_pnl": 0.0
+    }
+  ],
+  "closed_trades": []
+}
