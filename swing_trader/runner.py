@@ -4,6 +4,7 @@ import logging
 import time
 from datetime import date, datetime
 
+import pandas as pd
 import pytz
 import yfinance as yf
 
@@ -119,10 +120,18 @@ def update_positions() -> None:
             logger.warning("%s: no data — keeping position open", ticker)
             continue
 
-        last = df.iloc[-1]
-        day_high  = float(last["High"])
-        day_low   = float(last["Low"])
-        day_close = float(last["Close"])
+        # yfinance ≥0.2.x returns MultiIndex columns for single tickers — flatten
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
+
+        try:
+            last = df.iloc[-1]
+            day_high  = float(last["High"])
+            day_low   = float(last["Low"])
+            day_close = float(last["Close"])
+        except (KeyError, TypeError, ValueError) as exc:
+            logger.warning("%s: unexpected data shape (%s) — keeping position", ticker, exc)
+            continue
 
         update_unrealised(state, ticker, day_close)
 

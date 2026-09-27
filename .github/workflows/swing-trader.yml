@@ -126,7 +126,7 @@ jobs:
           git checkout main -- data/reports/
 
           git add data/reports/
-          git commit -m "report: weekly P&L $(date -u +%Y-%m-%d)"
+          git diff --cached --quiet || git commit -m "report: weekly P&L $(date -u +%Y-%m-%d)"
           git push origin reports
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
