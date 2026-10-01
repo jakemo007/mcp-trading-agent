@@ -1,6 +1,21 @@
 {
-  "capital": 31969.61,
+  "capital": 74387.52,
   "open_positions": [
+    {
+      "id": "99292f84",
+      "ticker": "COALINDIA.NS",
+      "entry": 418.47,
+      "stop_loss": 411.45,
+      "target": 436.29998779296875,
+      "qty": 59,
+      "capital_used": 24689.73,
+      "rr": 2.54,
+      "status": "OPEN",
+      "opened_at": "2026-10-01T10:30:50.264076",
+      "unrealised_pnl": 0.0
+    }
+  ],
+  "closed_trades": [
     {
       "id": "7995b3a3",
       "ticker": "BPCL.NS",
@@ -10,9 +25,13 @@
       "qty": 80,
       "capital_used": 24754.4,
       "rr": 3.45,
-      "status": "OPEN",
+      "status": "CLOSED",
       "opened_at": "2026-09-22T08:51:02.211181",
-      "unrealised_pnl": 0.0
+      "unrealised_pnl": 0.0,
+      "exit_price": 304.53,
+      "exit_reason": "SL_HIT",
+      "pnl": -392.0,
+      "closed_at": "2026-10-01T10:30:49.133893"
     },
     {
       "id": "ce4d7946",
@@ -23,9 +42,13 @@
       "qty": 138,
       "capital_used": 18744.54,
       "rr": 3.22,
-      "status": "OPEN",
+      "status": "CLOSED",
       "opened_at": "2026-09-22T08:51:02.384397",
-      "unrealised_pnl": 0.0
+      "unrealised_pnl": 0.0,
+      "exit_price": 134.18,
+      "exit_reason": "SL_HIT",
+      "pnl": -227.7,
+      "closed_at": "2026-10-01T10:30:49.258810"
     },
     {
       "id": "791b05f9",
@@ -36,9 +59,13 @@
       "qty": 60,
       "capital_used": 13974.0,
       "rr": 4.42,
-      "status": "OPEN",
+      "status": "CLOSED",
       "opened_at": "2026-09-22T08:51:02.560696",
-      "unrealised_pnl": 0.0
+      "unrealised_pnl": 0.0,
+      "exit_price": 230.58,
+      "exit_reason": "SL_HIT",
+      "pnl": -139.2,
+      "closed_at": "2026-10-01T10:30:49.379700"
     },
     {
       "id": "aaa65d77",
@@ -49,10 +76,13 @@
       "qty": 29,
       "capital_used": 10557.45,
       "rr": 3.43,
-      "status": "OPEN",
+      "status": "CLOSED",
       "opened_at": "2026-09-22T08:51:02.894826",
-      "unrealised_pnl": 0.0
+      "unrealised_pnl": 0.0,
+      "exit_price": 358.4,
+      "exit_reason": "SL_HIT",
+      "pnl": -163.85,
+      "closed_at": "2026-10-01T10:30:49.536261"
     }
-  ],
-  "closed_trades": []
+  ]
 }
