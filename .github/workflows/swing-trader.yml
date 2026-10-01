@@ -6,6 +6,8 @@ on:
     - cron: "55 3 * * 1-5"
     # Friday report — 15:15 IST = 09:45 UTC, Friday only
     - cron: "45 9 * * 5"
+    # Exit check every 30 min — 09:30–16:00 IST = 04:00–10:30 UTC, Mon–Fri
+    - cron: "*/30 4-10 * * 1-5"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -18,7 +20,50 @@ on:
 permissions:
   contents: write
 
+# All jobs rewrite data/swing_portfolio.json — run one at a time so pushes never race
+concurrency:
+  group: swing-portfolio
+  cancel-in-progress: false
+
 jobs:
+  # ── Intraday exit check (SL / target) ─────────────────────────────────────────
+  exits:
+    name: Exit Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' && contains(github.event.schedule, '*/30')
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Close positions at SL / target
+        run: |
+          python -c "
+          import logging; logging.basicConfig(level=logging.INFO)
+          from swing_trader.runner import update_positions
+          update_positions()
+          "
+
+      - name: Commit portfolio state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/swing_portfolio.json
+          git diff --cached --quiet || git commit -m "chore: swing exit check $(date -u +%Y-%m-%dT%H:%M)"
+          git pull --rebase origin main
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   # ── Daily scan + position update ──────────────────────────────────────────────
   scan:
     name: Daily Scan
@@ -42,8 +87,12 @@ jobs:
       - name: Run scan
         run: |
           python -c "
-          from swing_trader.runner import run_daily_scan
+          import logging; logging.basicConfig(level=logging.INFO)
+          from swing_trader.runner import run_daily_scan, update_positions
           dry = '${{ github.event.inputs.dry_run }}' == 'true'
+          # Close SL/target hits first so freed slots and capital are available for new entries
+          if not dry:
+              update_positions()
           run_daily_scan(dry_run=dry)
           "
 
@@ -54,6 +103,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/swing_portfolio.json
           git diff --cached --quiet || git commit -m "chore: swing portfolio update $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

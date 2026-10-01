@@ -101,7 +101,32 @@ def run_daily_scan(dry_run: bool = False) -> None:
         )
 
 
+def _bars_since_open(ticker: str, opened_at: str) -> pd.DataFrame | None:
+    """Hourly bars from the position's open time to now (yfinance keeps 730d of 1h)."""
+    opened = pd.Timestamp(opened_at)
+    if opened.tzinfo is None:
+        opened = opened.tz_localize("UTC")
+    try:
+        df = yf.download(ticker, start=opened.date().isoformat(), interval="1h",
+                         progress=False, auto_adjust=True)
+    except Exception as exc:
+        logger.warning("yfinance error updating %s: %s — keeping position", ticker, exc)
+        return None
+
+    if df is None or df.empty:
+        return None
+
+    # yfinance ≥0.2.x returns MultiIndex columns for single tickers — flatten
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = df.columns.get_level_values(0)
+
+    idx = df.index if df.index.tz is not None else df.index.tz_localize("UTC")
+    # Keep bars that close after entry (hourly bar starting before entry still overlaps it)
+    return df[idx + pd.Timedelta(hours=1) > opened.tz_convert(idx.tz)]
+
+
 def update_positions() -> None:
+    """Close any open position whose SL or target was touched at any point since entry."""
     state = load()
     if not state["open_positions"]:
         return
@@ -109,42 +134,33 @@ def update_positions() -> None:
     changed = False
     for pos in list(state["open_positions"]):
         ticker = pos["ticker"]
-        try:
-            df = yf.download(ticker, period="2d", interval="1d",
-                             progress=False, auto_adjust=True)
-        except Exception as exc:
-            logger.warning("yfinance error updating %s: %s — keeping position", ticker, exc)
-            continue
-
+        df = _bars_since_open(ticker, pos["opened_at"])
         if df is None or df.empty:
             logger.warning("%s: no data — keeping position open", ticker)
             continue
 
-        # yfinance ≥0.2.x returns MultiIndex columns for single tickers — flatten
-        if isinstance(df.columns, pd.MultiIndex):
-            df.columns = df.columns.get_level_values(0)
-
+        exit_price, exit_reason = None, None
         try:
-            last = df.iloc[-1]
-            day_high  = float(last["High"])
-            day_low   = float(last["Low"])
-            day_close = float(last["Close"])
+            for _, bar in df.iterrows():
+                o, h, l = float(bar["Open"]), float(bar["High"]), float(bar["Low"])
+                # Gap through a level fills at the open; if one bar spans both, assume SL first
+                if l <= pos["stop_loss"]:
+                    exit_price, exit_reason = min(o, pos["stop_loss"]), "SL_HIT"
+                    break
+                if h >= pos["target"]:
+                    exit_price, exit_reason = max(o, pos["target"]), "TARGET_HIT"
+                    break
+            last_close = float(df.iloc[-1]["Close"])
         except (KeyError, TypeError, ValueError) as exc:
             logger.warning("%s: unexpected data shape (%s) — keeping position", ticker, exc)
             continue
 
-        update_unrealised(state, ticker, day_close)
-
-        if day_low <= pos["stop_loss"]:
-            close_position(state, pos["id"], pos["stop_loss"], "SL_HIT")
-            logger.info("SL_HIT %s  exit=%.2f", ticker, pos["stop_loss"])
-            changed = True
-        elif day_high >= pos["target"]:
-            close_position(state, pos["id"], pos["target"], "TARGET_HIT")
-            logger.info("TARGET_HIT %s  exit=%.2f", ticker, pos["target"])
-            changed = True
+        if exit_reason:
+            close_position(state, pos["id"], round(exit_price, 2), exit_reason)
+            logger.info("%s %s  exit=%.2f", exit_reason, ticker, exit_price)
         else:
-            changed = True  # unrealised updated
+            update_unrealised(state, ticker, last_close)
+        changed = True
 
     if changed:
         save(state)
