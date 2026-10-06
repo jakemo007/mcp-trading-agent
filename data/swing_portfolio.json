@@ -1,19 +1,6 @@
 {
-  "capital": 55940.72,
+  "capital": 34923.05,
   "open_positions": [
-    {
-      "id": "99292f84",
-      "ticker": "COALINDIA.NS",
-      "entry": 418.47,
-      "stop_loss": 411.45,
-      "target": 436.29998779296875,
-      "qty": 59,
-      "capital_used": 24689.73,
-      "rr": 2.54,
-      "status": "OPEN",
-      "opened_at": "2026-10-01T10:30:50.264076",
-      "unrealised_pnl": 391.17
-    },
     {
       "id": "bc455c6a",
       "ticker": "MPHASIS.NS",
@@ -25,6 +12,45 @@
       "rr": 3.22,
       "status": "OPEN",
       "opened_at": "2026-10-05T10:55:07.002699",
+      "unrealised_pnl": -62.8
+    },
+    {
+      "id": "008ce46b",
+      "ticker": "VEDL.NS",
+      "entry": 254.33,
+      "stop_loss": 248.65,
+      "target": 275.75,
+      "qty": 78,
+      "capital_used": 19837.74,
+      "rr": 3.77,
+      "status": "OPEN",
+      "opened_at": "2026-10-06T10:50:47.530085",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "6f615746",
+      "ticker": "GAIL.NS",
+      "entry": 171.94,
+      "stop_loss": 170.15,
+      "target": 176.5,
+      "qty": 87,
+      "capital_used": 14958.78,
+      "rr": 2.55,
+      "status": "OPEN",
+      "opened_at": "2026-10-06T10:50:49.015297",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "b3d0e743",
+      "ticker": "ADANIPORTS.NS",
+      "entry": 1749.45,
+      "stop_loss": 1717.3,
+      "target": 1824.0,
+      "qty": 6,
+      "capital_used": 10496.7,
+      "rr": 2.32,
+      "status": "OPEN",
+      "opened_at": "2026-10-06T10:50:49.416563",
       "unrealised_pnl": 0.0
     }
   ],
@@ -96,6 +122,23 @@
       "exit_reason": "SL_HIT",
       "pnl": -163.85,
       "closed_at": "2026-10-01T10:30:49.536261"
+    },
+    {
+      "id": "99292f84",
+      "ticker": "COALINDIA.NS",
+      "entry": 418.47,
+      "stop_loss": 411.45,
+      "target": 436.29998779296875,
+      "qty": 59,
+      "capital_used": 24689.73,
+      "rr": 2.54,
+      "status": "CLOSED",
+      "opened_at": "2026-10-01T10:30:50.264076",
+      "unrealised_pnl": 391.17,
+      "exit_price": 411.45,
+      "exit_reason": "SL_HIT",
+      "pnl": -414.18,
+      "closed_at": "2026-10-06T10:50:46.637223"
     }
   ]
 }
