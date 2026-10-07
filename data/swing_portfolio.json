@@ -1,5 +1,5 @@
 {
-  "capital": 34923.05,
+  "capital": 37962.2,
   "open_positions": [
     {
       "id": "bc455c6a",
@@ -12,7 +12,7 @@
       "rr": 3.22,
       "status": "OPEN",
       "opened_at": "2026-10-05T10:55:07.002699",
-      "unrealised_pnl": -62.8
+      "unrealised_pnl": -134.8
     },
     {
       "id": "008ce46b",
@@ -25,20 +25,7 @@
       "rr": 3.77,
       "status": "OPEN",
       "opened_at": "2026-10-06T10:50:47.530085",
-      "unrealised_pnl": 0.0
-    },
-    {
-      "id": "6f615746",
-      "ticker": "GAIL.NS",
-      "entry": 171.94,
-      "stop_loss": 170.15,
-      "target": 176.5,
-      "qty": 87,
-      "capital_used": 14958.78,
-      "rr": 2.55,
-      "status": "OPEN",
-      "opened_at": "2026-10-06T10:50:49.015297",
-      "unrealised_pnl": 0.0
+      "unrealised_pnl": 551.46
     },
     {
       "id": "b3d0e743",
@@ -51,6 +38,19 @@
       "rr": 2.32,
       "status": "OPEN",
       "opened_at": "2026-10-06T10:50:49.416563",
+      "unrealised_pnl": 3.9
+    },
+    {
+      "id": "f20e2db6",
+      "ticker": "ADANIGREEN.NS",
+      "entry": 1307.1,
+      "stop_loss": 1283.89,
+      "target": 1377.800048828125,
+      "qty": 9,
+      "capital_used": 11763.9,
+      "rr": 3.05,
+      "status": "OPEN",
+      "opened_at": "2026-10-07T10:37:57.283044",
       "unrealised_pnl": 0.0
     }
   ],
@@ -139,6 +139,23 @@
       "exit_reason": "SL_HIT",
       "pnl": -414.18,
       "closed_at": "2026-10-06T10:50:46.637223"
+    },
+    {
+      "id": "6f615746",
+      "ticker": "GAIL.NS",
+      "entry": 171.94,
+      "stop_loss": 170.15,
+      "target": 176.5,
+      "qty": 87,
+      "capital_used": 14958.78,
+      "rr": 2.55,
+      "status": "CLOSED",
+      "opened_at": "2026-10-06T10:50:49.015297",
+      "unrealised_pnl": 0.0,
+      "exit_price": 170.15,
+      "exit_reason": "SL_HIT",
+      "pnl": -155.73,
+      "closed_at": "2026-10-07T10:37:54.915008"
     }
   ]
 }
