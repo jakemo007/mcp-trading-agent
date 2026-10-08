@@ -1,5 +1,5 @@
 {
-  "capital": 37962.2,
+  "capital": 33795.52,
   "open_positions": [
     {
       "id": "bc455c6a",
@@ -12,7 +12,7 @@
       "rr": 3.22,
       "status": "OPEN",
       "opened_at": "2026-10-05T10:55:07.002699",
-      "unrealised_pnl": -134.8
+      "unrealised_pnl": -19.6
     },
     {
       "id": "008ce46b",
@@ -25,33 +25,33 @@
       "rr": 3.77,
       "status": "OPEN",
       "opened_at": "2026-10-06T10:50:47.530085",
-      "unrealised_pnl": 551.46
+      "unrealised_pnl": -95.94
     },
     {
-      "id": "b3d0e743",
-      "ticker": "ADANIPORTS.NS",
-      "entry": 1749.45,
-      "stop_loss": 1717.3,
-      "target": 1824.0,
-      "qty": 6,
-      "capital_used": 10496.7,
-      "rr": 2.32,
+      "id": "910780b5",
+      "ticker": "BANKBARODA.NS",
+      "entry": 231.31,
+      "stop_loss": 228.45,
+      "target": 239.39999389648438,
+      "qty": 64,
+      "capital_used": 14803.84,
+      "rr": 2.83,
       "status": "OPEN",
-      "opened_at": "2026-10-06T10:50:49.416563",
-      "unrealised_pnl": 3.9
+      "opened_at": "2026-10-08T10:58:59.547736",
+      "unrealised_pnl": 0.0
     },
     {
-      "id": "f20e2db6",
-      "ticker": "ADANIGREEN.NS",
-      "entry": 1307.1,
-      "stop_loss": 1283.89,
-      "target": 1377.800048828125,
-      "qty": 9,
-      "capital_used": 11763.9,
-      "rr": 3.05,
+      "id": "e3716fc9",
+      "ticker": "PNB.NS",
+      "entry": 113.35,
+      "stop_loss": 111.55,
+      "target": 119.4000015258789,
+      "qty": 99,
+      "capital_used": 11221.65,
+      "rr": 3.36,
       "status": "OPEN",
-      "opened_at": "2026-10-07T10:37:57.283044",
-      "unrealised_pnl": 308.7
+      "opened_at": "2026-10-08T10:58:59.762952",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -156,6 +156,40 @@
       "exit_reason": "SL_HIT",
       "pnl": -155.73,
       "closed_at": "2026-10-07T10:37:54.915008"
+    },
+    {
+      "id": "b3d0e743",
+      "ticker": "ADANIPORTS.NS",
+      "entry": 1749.45,
+      "stop_loss": 1717.3,
+      "target": 1824.0,
+      "qty": 6,
+      "capital_used": 10496.7,
+      "rr": 2.32,
+      "status": "CLOSED",
+      "opened_at": "2026-10-06T10:50:49.416563",
+      "unrealised_pnl": 3.9,
+      "exit_price": 1717.3,
+      "exit_reason": "SL_HIT",
+      "pnl": -192.9,
+      "closed_at": "2026-10-08T10:58:53.550861"
+    },
+    {
+      "id": "f20e2db6",
+      "ticker": "ADANIGREEN.NS",
+      "entry": 1307.1,
+      "stop_loss": 1283.89,
+      "target": 1377.800048828125,
+      "qty": 9,
+      "capital_used": 11763.9,
+      "rr": 3.05,
+      "status": "CLOSED",
+      "opened_at": "2026-10-07T10:37:57.283044",
+      "unrealised_pnl": 308.7,
+      "exit_price": 1283.89,
+      "exit_reason": "SL_HIT",
+      "pnl": -208.89,
+      "closed_at": "2026-10-08T10:58:53.740633"
     }
   ]
 }
