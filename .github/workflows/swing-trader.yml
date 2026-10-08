@@ -175,7 +175,28 @@ jobs:
           mkdir -p data/reports
           git checkout main -- data/reports/
 
-          git add data/reports/
+          # Site root: index.html listing every weekly report, newest first
+          {
+            echo '<!doctype html><html><head><meta charset="utf-8">'
+            echo '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            echo '<title>Swing Trader Reports</title><style>'
+            echo 'body{background:#0d1117;color:#c9d1d9;font-family:system-ui,sans-serif;max-width:640px;margin:40px auto;padding:0 16px}'
+            echo 'a{color:#58a6ff;text-decoration:none}a:hover{text-decoration:underline}'
+            echo 'li{padding:8px 0;border-bottom:1px solid #21262d;list-style:none}ul{padding:0}'
+            echo '.latest{display:inline-block;margin:8px 0 24px;padding:10px 16px;background:#238636;color:#fff;border-radius:6px}'
+            echo '</style></head><body><h1>Swing Trader — Weekly Reports</h1>'
+            LATEST=$(ls data/reports/SWING-WEEKLY-*.html 2>/dev/null | sort -r | head -1)
+            [ -n "$LATEST" ] && echo "<a class=\"latest\" href=\"$LATEST\">Open latest report →</a>"
+            echo '<ul>'
+            for f in $(ls data/reports/SWING-WEEKLY-*.html 2>/dev/null | sort -r); do
+              d=$(basename "$f" .html | sed 's/SWING-WEEKLY-//')
+              echo "<li><a href=\"$f\">Week ending $d</a></li>"
+            done
+            echo '</ul></body></html>'
+          } > index.html
+          touch .nojekyll
+
+          git add data/reports/ index.html .nojekyll
           git diff --cached --quiet || git commit -m "report: weekly P&L $(date -u +%Y-%m-%d)"
           git push origin reports
         env:
@@ -183,7 +204,7 @@ jobs:
 
       - name: Print report URL
         run: |
-          REPO="${{ github.repository }}"
-          DATE=$(date -u +%Y-%m-%d)
-          echo "Report URL: https://github.com/${REPO}/blob/reports/data/reports/SWING-WEEKLY-${DATE}.html"
-          echo "If GitHub Pages is enabled: https://$(echo ${REPO} | cut -d/ -f1).github.io/$(echo ${REPO} | cut -d/ -f2)/data/reports/SWING-WEEKLY-${DATE}.html"
+          OWNER=$(echo "${{ github.repository }}" | cut -d/ -f1)
+          NAME=$(echo "${{ github.repository }}" | cut -d/ -f2)
+          echo "Reports site : https://${OWNER}.github.io/${NAME}/"
+          echo "This week    : https://${OWNER}.github.io/${NAME}/data/reports/SWING-WEEKLY-$(date -u +%Y-%m-%d).html"
