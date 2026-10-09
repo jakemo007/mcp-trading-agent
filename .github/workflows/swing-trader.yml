@@ -10,6 +10,12 @@ on:
     - cron: "*/30 4-10 * * 1-5"
   workflow_dispatch:
     inputs:
+      task:
+        description: "Job to run"
+        required: false
+        default: "scan"
+        type: choice
+        options: ["scan", "report"]
       dry_run:
         description: "Dry run (no positions written)"
         required: false
@@ -69,7 +75,7 @@ jobs:
     name: Daily Scan
     runs-on: ubuntu-latest
     # Skip this job on the Friday report trigger (09:45 UTC)
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && contains(github.event.schedule, '55 3'))
+    if: (github.event_name == 'workflow_dispatch' && inputs.task != 'report') || (github.event_name == 'schedule' && contains(github.event.schedule, '55 3'))
 
     steps:
       - uses: actions/checkout@v4
@@ -112,7 +118,7 @@ jobs:
   report:
     name: Weekly Report
     runs-on: ubuntu-latest
-    if: github.event_name == 'schedule' && contains(github.event.schedule, '45 9')
+    if: (github.event_name == 'workflow_dispatch' && inputs.task == 'report') || (github.event_name == 'schedule' && contains(github.event.schedule, '45 9'))
 
     steps:
       - uses: actions/checkout@v4
@@ -153,6 +159,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/swing_portfolio.json data/reports/
           git diff --cached --quiet || git commit -m "chore: swing portfolio update $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
