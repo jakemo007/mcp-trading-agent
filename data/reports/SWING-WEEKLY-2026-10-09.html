@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swing Trader — Weekly P&L Report</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0d0d; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; padding: 24px; }
+  h1 { color: #f0c040; font-size: 1.6rem; margin-bottom: 4px; }
+  .sub { color: #666; font-size: 0.85rem; margin-bottom: 28px; }
+  .cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 24px; min-width: 140px; }
+  .card-label { color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; }
+  .card-value { font-size: 1.4rem; font-weight: 700; margin-top: 4px; }
+  .green { color: #4caf50; } .red { color: #f44336; } .yellow { color: #f0c040; }
+  h2 { color: #ccc; font-size: 1rem; text-transform: uppercase; letter-spacing:.08em; margin: 28px 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { style='padding:8px 12px;text-align:left;border-bottom:1px solid #333;color:#aaa' }
+  td { padding:8px 12px;border-bottom:1px solid #222 }
+  tr:last-child td { border-bottom: none; }
+  .disclaimer { margin-top: 36px; color: #555; font-size: 0.75rem; border-top: 1px solid #222; padding-top: 12px; }
+</style>
+</head>
+<body>
+<h1>Swing Trader — Weekly P&L Report</h1>
+<div class="sub">Generated 2026-10-09 14:15 UTC &nbsp;|&nbsp; Nifty 100 Watchlist &nbsp;|&nbsp; Capital ₹100,000</div>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Available Capital</div>
+    <div class="card-value yellow">₹33,796</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Total P&L</div>
+    <div class="card-value red">₹-1,894 (-1.89%)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Trades Closed</div>
+    <div class="card-value">8</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Win Rate</div>
+    <div class="card-value red">0.0%</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Wins / Losses</div>
+    <div class="card-value"><span class="green">0W</span> / <span class="red">8L</span></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Open Positions</div>
+    <div class="card-value yellow">4</div>
+  </div>
+</div>
+
+<h2>Open Positions (4)</h2>
+<table>
+  <thead><tr>
+    <th>Ticker</th><th>Entry</th><th>Stop</th><th>Target</th>
+    <th>Qty</th><th>Capital</th><th>RR</th><th>Unrealised</th><th>Opened</th>
+  </tr></thead>
+  <tbody>
+        <tr style="background:#1a3a4a">
+          <td>MPHASIS.NS</td>
+          <td>₹2,305.85</td>
+          <td>₹2,257.71</td>
+          <td>₹2,461.10</td>
+          <td>8</td>
+          <td>₹18,446.80</td>
+          <td>3.22</td>
+          <td>₹+433.20</td>
+          <td>2026-10-05</td>
+        </tr>
+        <tr style="background:#1a3a4a">
+          <td>VEDL.NS</td>
+          <td>₹254.33</td>
+          <td>₹248.65</td>
+          <td>₹275.75</td>
+          <td>78</td>
+          <td>₹19,837.74</td>
+          <td>3.77</td>
+          <td>₹+754.26</td>
+          <td>2026-10-06</td>
+        </tr>
+        <tr style="background:#1a3a4a">
+          <td>BANKBARODA.NS</td>
+          <td>₹231.31</td>
+          <td>₹228.45</td>
+          <td>₹239.40</td>
+          <td>64</td>
+          <td>₹14,803.84</td>
+          <td>2.83</td>
+          <td>₹+287.36</td>
+          <td>2026-10-08</td>
+        </tr>
+        <tr style="background:#1a3a4a">
+          <td>PNB.NS</td>
+          <td>₹113.35</td>
+          <td>₹111.55</td>
+          <td>₹119.40</td>
+          <td>99</td>
+          <td>₹11,221.65</td>
+          <td>3.36</td>
+          <td>₹+359.37</td>
+          <td>2026-10-08</td>
+        </tr></tbody>
+</table>
+
+<h2>Closed Trades (8)</h2>
+<table>
+  <thead><tr>
+    <th>Ticker</th><th>Entry</th><th>Exit</th><th>Qty</th>
+    <th>P&L</th><th>Reason</th><th>Opened</th><th>Closed</th>
+  </tr></thead>
+  <tbody>
+        <tr style="background:#4a1a1a">
+          <td>ADANIGREEN.NS</td>
+          <td>₹1,307.10</td>
+          <td>₹1,283.89</td>
+          <td>9</td>
+          <td>₹-208.89</td>
+          <td>SL_HIT</td>
+          <td>2026-10-07</td>
+          <td>2026-10-08</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ADANIPORTS.NS</td>
+          <td>₹1,749.45</td>
+          <td>₹1,717.30</td>
+          <td>6</td>
+          <td>₹-192.90</td>
+          <td>SL_HIT</td>
+          <td>2026-10-06</td>
+          <td>2026-10-08</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>GAIL.NS</td>
+          <td>₹171.94</td>
+          <td>₹170.15</td>
+          <td>87</td>
+          <td>₹-155.73</td>
+          <td>SL_HIT</td>
+          <td>2026-10-06</td>
+          <td>2026-10-07</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>COALINDIA.NS</td>
+          <td>₹418.47</td>
+          <td>₹411.45</td>
+          <td>59</td>
+          <td>₹-414.18</td>
+          <td>SL_HIT</td>
+          <td>2026-10-01</td>
+          <td>2026-10-06</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>TATAPOWER.NS</td>
+          <td>₹364.05</td>
+          <td>₹358.40</td>
+          <td>29</td>
+          <td>₹-163.85</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ONGC.NS</td>
+          <td>₹232.90</td>
+          <td>₹230.58</td>
+          <td>60</td>
+          <td>₹-139.20</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>IOC.NS</td>
+          <td>₹135.83</td>
+          <td>₹134.18</td>
+          <td>138</td>
+          <td>₹-227.70</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>BPCL.NS</td>
+          <td>₹309.43</td>
+          <td>₹304.53</td>
+          <td>80</td>
+          <td>₹-392.00</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr></tbody>
+</table>
+
+<div class="disclaimer">
+  This is an automated paper trading simulation for educational purposes only.
+  Not financial advice. Trade at your own risk.
+</div>
+</body>
+</html>
