@@ -1,32 +1,6 @@
 {
-  "capital": 37089.62,
+  "capital": 39982.62,
   "open_positions": [
-    {
-      "id": "008ce46b",
-      "ticker": "VEDL.NS",
-      "entry": 254.33,
-      "stop_loss": 248.65,
-      "target": 275.75,
-      "qty": 78,
-      "capital_used": 19837.74,
-      "rr": 3.77,
-      "status": "OPEN",
-      "opened_at": "2026-10-06T10:50:47.530085",
-      "unrealised_pnl": -337.74
-    },
-    {
-      "id": "910780b5",
-      "ticker": "BANKBARODA.NS",
-      "entry": 231.31,
-      "stop_loss": 228.45,
-      "target": 239.39999389648438,
-      "qty": 64,
-      "capital_used": 14803.84,
-      "rr": 2.83,
-      "status": "OPEN",
-      "opened_at": "2026-10-08T10:58:59.547736",
-      "unrealised_pnl": -147.84
-    },
     {
       "id": "b9195555",
       "ticker": "ADANIGREEN.NS",
@@ -38,7 +12,7 @@
       "rr": 2.59,
       "status": "OPEN",
       "opened_at": "2026-10-14T09:05:16.377552",
-      "unrealised_pnl": 82.8
+      "unrealised_pnl": 68.4
     },
     {
       "id": "660b9a21",
@@ -51,7 +25,33 @@
       "rr": 3.33,
       "status": "OPEN",
       "opened_at": "2026-10-14T09:05:18.002792",
-      "unrealised_pnl": 556.2
+      "unrealised_pnl": 248.4
+    },
+    {
+      "id": "6ba6181b",
+      "ticker": "COALINDIA.NS",
+      "entry": 412.6,
+      "stop_loss": 405.83,
+      "target": 432.8999938964844,
+      "qty": 43,
+      "capital_used": 17741.8,
+      "rr": 3.0,
+      "status": "OPEN",
+      "opened_at": "2026-10-15T08:38:21.486855",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "dd8278a7",
+      "ticker": "HCLTECH.NS",
+      "entry": 1327.15,
+      "stop_loss": 1304.26,
+      "target": 1375.9000244140625,
+      "qty": 10,
+      "capital_used": 13271.5,
+      "rr": 2.13,
+      "status": "OPEN",
+      "opened_at": "2026-10-15T08:38:24.544551",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -241,6 +241,40 @@
       "exit_reason": "SL_HIT",
       "pnl": -288.3,
       "closed_at": "2026-10-14T09:05:14.293876"
+    },
+    {
+      "id": "008ce46b",
+      "ticker": "VEDL.NS",
+      "entry": 254.33,
+      "stop_loss": 248.65,
+      "target": 275.75,
+      "qty": 78,
+      "capital_used": 19837.74,
+      "rr": 3.77,
+      "status": "CLOSED",
+      "opened_at": "2026-10-06T10:50:47.530085",
+      "unrealised_pnl": -337.74,
+      "exit_price": 247.25,
+      "exit_reason": "SL_HIT",
+      "pnl": -552.24,
+      "closed_at": "2026-10-15T08:38:19.511507"
+    },
+    {
+      "id": "910780b5",
+      "ticker": "BANKBARODA.NS",
+      "entry": 231.31,
+      "stop_loss": 228.45,
+      "target": 239.39999389648438,
+      "qty": 64,
+      "capital_used": 14803.84,
+      "rr": 2.83,
+      "status": "CLOSED",
+      "opened_at": "2026-10-08T10:58:59.547736",
+      "unrealised_pnl": -147.84,
+      "exit_price": 228.45,
+      "exit_reason": "SL_HIT",
+      "pnl": -183.04,
+      "closed_at": "2026-10-15T08:38:19.735082"
     }
   ]
 }
