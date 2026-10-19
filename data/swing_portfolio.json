@@ -1,5 +1,5 @@
 {
-  "capital": 40565.12,
+  "capital": 40217.77,
   "open_positions": [
     {
       "id": "b9195555",
@@ -12,20 +12,7 @@
       "rr": 2.59,
       "status": "OPEN",
       "opened_at": "2026-10-14T09:05:16.377552",
-      "unrealised_pnl": -61.2
-    },
-    {
-      "id": "660b9a21",
-      "ticker": "PNB.NS",
-      "entry": 113.35,
-      "stop_loss": 111.46,
-      "target": 119.63999938964844,
-      "qty": 108,
-      "capital_used": 12241.8,
-      "rr": 3.33,
-      "status": "OPEN",
-      "opened_at": "2026-10-14T09:05:18.002792",
-      "unrealised_pnl": 318.6
+      "unrealised_pnl": -106.8
     },
     {
       "id": "6ba6181b",
@@ -38,7 +25,7 @@
       "rr": 3.0,
       "status": "OPEN",
       "opened_at": "2026-10-15T08:38:21.486855",
-      "unrealised_pnl": 197.8
+      "unrealised_pnl": -4.3
     },
     {
       "id": "e023844f",
@@ -51,7 +38,20 @@
       "rr": 5.18,
       "status": "OPEN",
       "opened_at": "2026-10-16T08:33:02.015701",
-      "unrealised_pnl": 269.8
+      "unrealised_pnl": 178.6
+    },
+    {
+      "id": "dc90babc",
+      "ticker": "JSWSTEEL.NS",
+      "entry": 1210.25,
+      "stop_loss": 1193.56,
+      "target": 1304.0,
+      "qty": 11,
+      "capital_used": 13312.75,
+      "rr": 5.62,
+      "status": "OPEN",
+      "opened_at": "2026-10-19T09:21:40.966579",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -292,6 +292,23 @@
       "exit_reason": "TARGET_HIT",
       "pnl": 487.5,
       "closed_at": "2026-10-16T08:32:59.208708"
+    },
+    {
+      "id": "660b9a21",
+      "ticker": "PNB.NS",
+      "entry": 113.35,
+      "stop_loss": 111.46,
+      "target": 119.63999938964844,
+      "qty": 108,
+      "capital_used": 12241.8,
+      "rr": 3.33,
+      "status": "CLOSED",
+      "opened_at": "2026-10-14T09:05:18.002792",
+      "unrealised_pnl": 318.6,
+      "exit_price": 120.05,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 723.6,
+      "closed_at": "2026-10-19T09:21:40.469897"
     }
   ]
 }
