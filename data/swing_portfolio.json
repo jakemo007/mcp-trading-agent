@@ -1,32 +1,6 @@
 {
-  "capital": 40217.77,
+  "capital": 43300.88,
   "open_positions": [
-    {
-      "id": "b9195555",
-      "ticker": "ADANIGREEN.NS",
-      "entry": 1307.1,
-      "stop_loss": 1279.76,
-      "target": 1377.800048828125,
-      "qty": 12,
-      "capital_used": 15685.2,
-      "rr": 2.59,
-      "status": "OPEN",
-      "opened_at": "2026-10-14T09:05:16.377552",
-      "unrealised_pnl": -142.8
-    },
-    {
-      "id": "6ba6181b",
-      "ticker": "COALINDIA.NS",
-      "entry": 412.6,
-      "stop_loss": 405.83,
-      "target": 432.8999938964844,
-      "qty": 43,
-      "capital_used": 17741.8,
-      "rr": 3.0,
-      "status": "OPEN",
-      "opened_at": "2026-10-15T08:38:21.486855",
-      "unrealised_pnl": -38.7
-    },
     {
       "id": "e023844f",
       "ticker": "TATAPOWER.NS",
@@ -38,7 +12,7 @@
       "rr": 5.18,
       "status": "OPEN",
       "opened_at": "2026-10-16T08:33:02.015701",
-      "unrealised_pnl": 209.0
+      "unrealised_pnl": 43.7
     },
     {
       "id": "dc90babc",
@@ -51,7 +25,33 @@
       "rr": 5.62,
       "status": "OPEN",
       "opened_at": "2026-10-19T09:21:40.966579",
-      "unrealised_pnl": 341.55
+      "unrealised_pnl": 77.55
+    },
+    {
+      "id": "f06d89d8",
+      "ticker": "INFY.NS",
+      "entry": 1109.2,
+      "stop_loss": 1078.54,
+      "target": 1170.9000244140625,
+      "qty": 16,
+      "capital_used": 17747.2,
+      "rr": 2.01,
+      "status": "OPEN",
+      "opened_at": "2026-10-21T08:56:15.125887",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "dad31380",
+      "ticker": "MPHASIS.NS",
+      "entry": 2395.5,
+      "stop_loss": 2333.42,
+      "target": 2580.0,
+      "qty": 5,
+      "capital_used": 11977.5,
+      "rr": 2.97,
+      "status": "OPEN",
+      "opened_at": "2026-10-21T08:56:16.912662",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -309,6 +309,40 @@
       "exit_reason": "TARGET_HIT",
       "pnl": 723.6,
       "closed_at": "2026-10-19T09:21:40.469897"
+    },
+    {
+      "id": "b9195555",
+      "ticker": "ADANIGREEN.NS",
+      "entry": 1307.1,
+      "stop_loss": 1279.76,
+      "target": 1377.800048828125,
+      "qty": 12,
+      "capital_used": 15685.2,
+      "rr": 2.59,
+      "status": "CLOSED",
+      "opened_at": "2026-10-14T09:05:16.377552",
+      "unrealised_pnl": -142.8,
+      "exit_price": 1279.76,
+      "exit_reason": "SL_HIT",
+      "pnl": -328.08,
+      "closed_at": "2026-10-21T08:56:09.235261"
+    },
+    {
+      "id": "6ba6181b",
+      "ticker": "COALINDIA.NS",
+      "entry": 412.6,
+      "stop_loss": 405.83,
+      "target": 432.8999938964844,
+      "qty": 43,
+      "capital_used": 17741.8,
+      "rr": 3.0,
+      "status": "CLOSED",
+      "opened_at": "2026-10-15T08:38:21.486855",
+      "unrealised_pnl": -38.7,
+      "exit_price": 405.83,
+      "exit_reason": "SL_HIT",
+      "pnl": -291.11,
+      "closed_at": "2026-10-21T08:56:09.542754"
     }
   ]
 }
