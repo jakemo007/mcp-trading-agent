@@ -1,5 +1,5 @@
 {
-  "capital": 43300.88,
+  "capital": 45172.58,
   "open_positions": [
     {
       "id": "e023844f",
@@ -12,7 +12,7 @@
       "rr": 5.18,
       "status": "OPEN",
       "opened_at": "2026-10-16T08:33:02.015701",
-      "unrealised_pnl": 199.5
+      "unrealised_pnl": 180.5
     },
     {
       "id": "dc90babc",
@@ -25,33 +25,33 @@
       "rr": 5.62,
       "status": "OPEN",
       "opened_at": "2026-10-19T09:21:40.966579",
-      "unrealised_pnl": 139.15
+      "unrealised_pnl": 74.25
     },
     {
-      "id": "f06d89d8",
+      "id": "62c7fcf2",
       "ticker": "INFY.NS",
       "entry": 1109.2,
-      "stop_loss": 1078.54,
-      "target": 1170.9000244140625,
+      "stop_loss": 1078.89,
+      "target": 1174.5,
       "qty": 16,
       "capital_used": 17747.2,
-      "rr": 2.01,
+      "rr": 2.15,
       "status": "OPEN",
-      "opened_at": "2026-10-21T08:56:15.125887",
-      "unrealised_pnl": 940.8
+      "opened_at": "2026-10-22T08:58:20.939232",
+      "unrealised_pnl": 0.0
     },
     {
-      "id": "dad31380",
-      "ticker": "MPHASIS.NS",
-      "entry": 2395.5,
-      "stop_loss": 2333.42,
-      "target": 2580.0,
+      "id": "c386c631",
+      "ticker": "TCS.NS",
+      "entry": 2409.4,
+      "stop_loss": 2347.93,
+      "target": 2533.300048828125,
       "qty": 5,
-      "capital_used": 11977.5,
-      "rr": 2.97,
+      "capital_used": 12047.0,
+      "rr": 2.02,
       "status": "OPEN",
-      "opened_at": "2026-10-21T08:56:16.912662",
-      "unrealised_pnl": 897.5
+      "opened_at": "2026-10-22T08:58:21.193853",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -343,6 +343,40 @@
       "exit_reason": "SL_HIT",
       "pnl": -291.11,
       "closed_at": "2026-10-21T08:56:09.542754"
+    },
+    {
+      "id": "f06d89d8",
+      "ticker": "INFY.NS",
+      "entry": 1109.2,
+      "stop_loss": 1078.54,
+      "target": 1170.9000244140625,
+      "qty": 16,
+      "capital_used": 17747.2,
+      "rr": 2.01,
+      "status": "CLOSED",
+      "opened_at": "2026-10-21T08:56:15.125887",
+      "unrealised_pnl": 940.8,
+      "exit_price": 1170.9,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 987.2,
+      "closed_at": "2026-10-22T08:58:16.028474"
+    },
+    {
+      "id": "dad31380",
+      "ticker": "MPHASIS.NS",
+      "entry": 2395.5,
+      "stop_loss": 2333.42,
+      "target": 2580.0,
+      "qty": 5,
+      "capital_used": 11977.5,
+      "rr": 2.97,
+      "status": "CLOSED",
+      "opened_at": "2026-10-21T08:56:16.912662",
+      "unrealised_pnl": 897.5,
+      "exit_price": 2586.3,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 954.0,
+      "closed_at": "2026-10-22T08:58:16.318564"
     }
   ]
 }
