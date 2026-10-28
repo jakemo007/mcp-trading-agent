@@ -1,19 +1,6 @@
 {
-  "capital": 35250.41,
+  "capital": 45596.57,
   "open_positions": [
-    {
-      "id": "07957d04",
-      "ticker": "WIPRO.NS",
-      "entry": 187.41,
-      "stop_loss": 182.88,
-      "target": 197.25,
-      "qty": 137,
-      "capital_used": 25675.17,
-      "rr": 2.17,
-      "status": "OPEN",
-      "opened_at": "2026-10-23T08:53:17.931794",
-      "unrealised_pnl": -56.17
-    },
     {
       "id": "a6077e87",
       "ticker": "HCLTECH.NS",
@@ -25,7 +12,7 @@
       "rr": 3.39,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.303885",
-      "unrealised_pnl": 423.8
+      "unrealised_pnl": 76.7
     },
     {
       "id": "f68d660b",
@@ -38,7 +25,7 @@
       "rr": 2.29,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.461198",
-      "unrealised_pnl": 699.4
+      "unrealised_pnl": 90.35
     },
     {
       "id": "0a3e5c52",
@@ -51,7 +38,20 @@
       "rr": 3.36,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.636207",
-      "unrealised_pnl": 350.0
+      "unrealised_pnl": 166.8
+    },
+    {
+      "id": "f49f9aa0",
+      "ticker": "JSWSTEEL.NS",
+      "entry": 1225.7,
+      "stop_loss": 1205.11,
+      "target": 1275.9000244140625,
+      "qty": 12,
+      "capital_used": 14708.4,
+      "rr": 2.44,
+      "status": "OPEN",
+      "opened_at": "2026-10-28T10:05:23.281756",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -445,6 +445,23 @@
       "exit_reason": "TARGET_HIT",
       "pnl": 820.5,
       "closed_at": "2026-10-23T08:53:14.527645"
+    },
+    {
+      "id": "07957d04",
+      "ticker": "WIPRO.NS",
+      "entry": 187.41,
+      "stop_loss": 182.88,
+      "target": 197.25,
+      "qty": 137,
+      "capital_used": 25675.17,
+      "rr": 2.17,
+      "status": "CLOSED",
+      "opened_at": "2026-10-23T08:53:17.931794",
+      "unrealised_pnl": -56.17,
+      "exit_price": 182.88,
+      "exit_reason": "SL_HIT",
+      "pnl": -620.61,
+      "closed_at": "2026-10-28T10:05:22.640087"
     }
   ]
 }
