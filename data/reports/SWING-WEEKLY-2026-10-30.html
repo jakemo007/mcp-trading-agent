@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swing Trader — Weekly P&L Report</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d0d0d; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; padding: 24px; }
+  h1 { color: #f0c040; font-size: 1.6rem; margin-bottom: 4px; }
+  .sub { color: #666; font-size: 0.85rem; margin-bottom: 28px; }
+  .cards { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 24px; min-width: 140px; }
+  .card-label { color: #888; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .05em; }
+  .card-value { font-size: 1.4rem; font-weight: 700; margin-top: 4px; }
+  .green { color: #4caf50; } .red { color: #f44336; } .yellow { color: #f0c040; }
+  h2 { color: #ccc; font-size: 1rem; text-transform: uppercase; letter-spacing:.08em; margin: 28px 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { style='padding:8px 12px;text-align:left;border-bottom:1px solid #333;color:#aaa' }
+  td { padding:8px 12px;border-bottom:1px solid #222 }
+  tr:last-child td { border-bottom: none; }
+  .disclaimer { margin-top: 36px; color: #555; font-size: 0.75rem; border-top: 1px solid #222; padding-top: 12px; }
+</style>
+</head>
+<body>
+<h1>Swing Trader — Weekly P&L Report</h1>
+<div class="sub">Generated 2026-10-30 16:13 UTC &nbsp;|&nbsp; Nifty 100 Watchlist &nbsp;|&nbsp; Capital ₹100,000</div>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Available Capital</div>
+    <div class="card-value yellow">₹45,597</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Total P&L</div>
+    <div class="card-value green">₹+2,398 (+2.40%)</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Trades Closed</div>
+    <div class="card-value">24</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Win Rate</div>
+    <div class="card-value red">33.3%</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Wins / Losses</div>
+    <div class="card-value"><span class="green">8W</span> / <span class="red">16L</span></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Open Positions</div>
+    <div class="card-value yellow">4</div>
+  </div>
+</div>
+
+<h2>Open Positions (4)</h2>
+<table>
+  <thead><tr>
+    <th>Ticker</th><th>Entry</th><th>Stop</th><th>Target</th>
+    <th>Qty</th><th>Capital</th><th>RR</th><th>Unrealised</th><th>Opened</th>
+  </tr></thead>
+  <tbody>
+        <tr style="background:#1a3a4a">
+          <td>HCLTECH.NS</td>
+          <td>₹1,387.40</td>
+          <td>₹1,363.74</td>
+          <td>₹1,467.50</td>
+          <td>13</td>
+          <td>₹18,036.20</td>
+          <td>3.39</td>
+          <td>₹+529.10</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#1a3a4a">
+          <td>INFY.NS</td>
+          <td>₹1,109.20</td>
+          <td>₹1,070.58</td>
+          <td>₹1,197.80</td>
+          <td>13</td>
+          <td>₹14,419.60</td>
+          <td>2.29</td>
+          <td>₹+985.40</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#1a3a4a">
+          <td>TCS.NS</td>
+          <td>₹2,409.40</td>
+          <td>₹2,345.22</td>
+          <td>₹2,625.00</td>
+          <td>4</td>
+          <td>₹9,637.60</td>
+          <td>3.36</td>
+          <td>₹+372.80</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#1a3a4a">
+          <td>JSWSTEEL.NS</td>
+          <td>₹1,225.70</td>
+          <td>₹1,205.11</td>
+          <td>₹1,275.90</td>
+          <td>12</td>
+          <td>₹14,708.40</td>
+          <td>2.44</td>
+          <td>₹+243.60</td>
+          <td>2026-10-28</td>
+        </tr></tbody>
+</table>
+
+<h2>Closed Trades (24)</h2>
+<table>
+  <thead><tr>
+    <th>Ticker</th><th>Entry</th><th>Exit</th><th>Qty</th>
+    <th>P&L</th><th>Reason</th><th>Opened</th><th>Closed</th>
+  </tr></thead>
+  <tbody>
+        <tr style="background:#4a1a1a">
+          <td>WIPRO.NS</td>
+          <td>₹187.41</td>
+          <td>₹182.88</td>
+          <td>137</td>
+          <td>₹-620.61</td>
+          <td>SL_HIT</td>
+          <td>2026-10-23</td>
+          <td>2026-10-28</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>TCS.NS</td>
+          <td>₹2,409.40</td>
+          <td>₹2,573.50</td>
+          <td>5</td>
+          <td>₹+820.50</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-22</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>INFY.NS</td>
+          <td>₹1,109.20</td>
+          <td>₹1,179.95</td>
+          <td>16</td>
+          <td>₹+1,132.00</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-22</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>JSWSTEEL.NS</td>
+          <td>₹1,210.25</td>
+          <td>₹1,193.56</td>
+          <td>11</td>
+          <td>₹-183.59</td>
+          <td>SL_HIT</td>
+          <td>2026-10-19</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>TATAPOWER.NS</td>
+          <td>₹346.75</td>
+          <td>₹341.33</td>
+          <td>38</td>
+          <td>₹-205.96</td>
+          <td>SL_HIT</td>
+          <td>2026-10-16</td>
+          <td>2026-10-23</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>MPHASIS.NS</td>
+          <td>₹2,395.50</td>
+          <td>₹2,586.30</td>
+          <td>5</td>
+          <td>₹+954.00</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-21</td>
+          <td>2026-10-22</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>INFY.NS</td>
+          <td>₹1,109.20</td>
+          <td>₹1,170.90</td>
+          <td>16</td>
+          <td>₹+987.20</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-21</td>
+          <td>2026-10-22</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>COALINDIA.NS</td>
+          <td>₹412.60</td>
+          <td>₹405.83</td>
+          <td>43</td>
+          <td>₹-291.11</td>
+          <td>SL_HIT</td>
+          <td>2026-10-15</td>
+          <td>2026-10-21</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ADANIGREEN.NS</td>
+          <td>₹1,307.10</td>
+          <td>₹1,279.76</td>
+          <td>12</td>
+          <td>₹-328.08</td>
+          <td>SL_HIT</td>
+          <td>2026-10-14</td>
+          <td>2026-10-21</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>PNB.NS</td>
+          <td>₹113.35</td>
+          <td>₹120.05</td>
+          <td>108</td>
+          <td>₹+723.60</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-14</td>
+          <td>2026-10-19</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>HCLTECH.NS</td>
+          <td>₹1,327.15</td>
+          <td>₹1,375.90</td>
+          <td>10</td>
+          <td>₹+487.50</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-15</td>
+          <td>2026-10-16</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>BANKBARODA.NS</td>
+          <td>₹231.31</td>
+          <td>₹228.45</td>
+          <td>64</td>
+          <td>₹-183.04</td>
+          <td>SL_HIT</td>
+          <td>2026-10-08</td>
+          <td>2026-10-15</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>VEDL.NS</td>
+          <td>₹254.33</td>
+          <td>₹247.25</td>
+          <td>78</td>
+          <td>₹-552.24</td>
+          <td>SL_HIT</td>
+          <td>2026-10-06</td>
+          <td>2026-10-15</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ADANIGREEN.NS</td>
+          <td>₹1,307.10</td>
+          <td>₹1,278.27</td>
+          <td>10</td>
+          <td>₹-288.30</td>
+          <td>SL_HIT</td>
+          <td>2026-10-13</td>
+          <td>2026-10-14</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>PNB.NS</td>
+          <td>₹113.35</td>
+          <td>₹119.40</td>
+          <td>99</td>
+          <td>₹+598.95</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-08</td>
+          <td>2026-10-14</td>
+        </tr>
+        <tr style="background:#1a4a1a">
+          <td>MPHASIS.NS</td>
+          <td>₹2,305.85</td>
+          <td>₹2,461.10</td>
+          <td>8</td>
+          <td>₹+1,242.00</td>
+          <td>TARGET_HIT</td>
+          <td>2026-10-05</td>
+          <td>2026-10-13</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ADANIGREEN.NS</td>
+          <td>₹1,307.10</td>
+          <td>₹1,283.89</td>
+          <td>9</td>
+          <td>₹-208.89</td>
+          <td>SL_HIT</td>
+          <td>2026-10-07</td>
+          <td>2026-10-08</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ADANIPORTS.NS</td>
+          <td>₹1,749.45</td>
+          <td>₹1,717.30</td>
+          <td>6</td>
+          <td>₹-192.90</td>
+          <td>SL_HIT</td>
+          <td>2026-10-06</td>
+          <td>2026-10-08</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>GAIL.NS</td>
+          <td>₹171.94</td>
+          <td>₹170.15</td>
+          <td>87</td>
+          <td>₹-155.73</td>
+          <td>SL_HIT</td>
+          <td>2026-10-06</td>
+          <td>2026-10-07</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>COALINDIA.NS</td>
+          <td>₹418.47</td>
+          <td>₹411.45</td>
+          <td>59</td>
+          <td>₹-414.18</td>
+          <td>SL_HIT</td>
+          <td>2026-10-01</td>
+          <td>2026-10-06</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>TATAPOWER.NS</td>
+          <td>₹364.05</td>
+          <td>₹358.40</td>
+          <td>29</td>
+          <td>₹-163.85</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>ONGC.NS</td>
+          <td>₹232.90</td>
+          <td>₹230.58</td>
+          <td>60</td>
+          <td>₹-139.20</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>IOC.NS</td>
+          <td>₹135.83</td>
+          <td>₹134.18</td>
+          <td>138</td>
+          <td>₹-227.70</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr>
+        <tr style="background:#4a1a1a">
+          <td>BPCL.NS</td>
+          <td>₹309.43</td>
+          <td>₹304.53</td>
+          <td>80</td>
+          <td>₹-392.00</td>
+          <td>SL_HIT</td>
+          <td>2026-09-22</td>
+          <td>2026-10-01</td>
+        </tr></tbody>
+</table>
+
+<div class="disclaimer">
+  This is an automated paper trading simulation for educational purposes only.
+  Not financial advice. Trade at your own risk.
+</div>
+</body>
+</html>
