@@ -1,5 +1,5 @@
 {
-  "capital": 45596.57,
+  "capital": 46198.97,
   "open_positions": [
     {
       "id": "a6077e87",
@@ -12,7 +12,7 @@
       "rr": 3.39,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.303885",
-      "unrealised_pnl": 529.1
+      "unrealised_pnl": 605.8
     },
     {
       "id": "f68d660b",
@@ -25,7 +25,7 @@
       "rr": 2.29,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.461198",
-      "unrealised_pnl": 985.4
+      "unrealised_pnl": 673.4
     },
     {
       "id": "0a3e5c52",
@@ -38,20 +38,20 @@
       "rr": 3.36,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.636207",
-      "unrealised_pnl": 372.8
+      "unrealised_pnl": 369.2
     },
     {
-      "id": "f49f9aa0",
+      "id": "71e6673c",
       "ticker": "JSWSTEEL.NS",
       "entry": 1225.7,
-      "stop_loss": 1205.11,
-      "target": 1275.9000244140625,
+      "stop_loss": 1205.08,
+      "target": 1310.9000244140625,
       "qty": 12,
       "capital_used": 14708.4,
-      "rr": 2.44,
+      "rr": 4.13,
       "status": "OPEN",
-      "opened_at": "2026-10-28T10:05:23.281756",
-      "unrealised_pnl": 243.6
+      "opened_at": "2026-11-02T11:44:43.131208",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -462,6 +462,23 @@
       "exit_reason": "SL_HIT",
       "pnl": -620.61,
       "closed_at": "2026-10-28T10:05:22.640087"
+    },
+    {
+      "id": "f49f9aa0",
+      "ticker": "JSWSTEEL.NS",
+      "entry": 1225.7,
+      "stop_loss": 1205.11,
+      "target": 1275.9000244140625,
+      "qty": 12,
+      "capital_used": 14708.4,
+      "rr": 2.44,
+      "status": "CLOSED",
+      "opened_at": "2026-10-28T10:05:23.281756",
+      "unrealised_pnl": 243.6,
+      "exit_price": 1275.9,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 602.4,
+      "closed_at": "2026-11-02T11:44:42.988720"
     }
   ]
 }
