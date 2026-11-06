@@ -1,32 +1,6 @@
 {
-  "capital": 46694.82,
+  "capital": 41493.03,
   "open_positions": [
-    {
-      "id": "a6077e87",
-      "ticker": "HCLTECH.NS",
-      "entry": 1387.4,
-      "stop_loss": 1363.74,
-      "target": 1467.5,
-      "qty": 13,
-      "capital_used": 18036.2,
-      "rr": 3.39,
-      "status": "OPEN",
-      "opened_at": "2026-10-23T08:53:18.303885",
-      "unrealised_pnl": 560.3
-    },
-    {
-      "id": "f68d660b",
-      "ticker": "INFY.NS",
-      "entry": 1109.2,
-      "stop_loss": 1070.58,
-      "target": 1197.800048828125,
-      "qty": 13,
-      "capital_used": 14419.6,
-      "rr": 2.29,
-      "status": "OPEN",
-      "opened_at": "2026-10-23T08:53:18.461198",
-      "unrealised_pnl": 756.6
-    },
     {
       "id": "0a3e5c52",
       "ticker": "TCS.NS",
@@ -38,20 +12,46 @@
       "rr": 3.36,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.636207",
-      "unrealised_pnl": 345.2
+      "unrealised_pnl": 356.4
     },
     {
-      "id": "925bc00d",
-      "ticker": "HINDALCO.NS",
-      "entry": 898.15,
-      "stop_loss": 882.03,
-      "target": 950.4000244140625,
-      "qty": 17,
-      "capital_used": 15268.55,
-      "rr": 3.24,
+      "id": "8445e8d3",
+      "ticker": "TATASTEEL.NS",
+      "entry": 179.24,
+      "stop_loss": 176.43,
+      "target": 186.3000030517578,
+      "qty": 135,
+      "capital_used": 24197.4,
+      "rr": 2.51,
       "status": "OPEN",
-      "opened_at": "2026-11-03T11:26:05.124328",
-      "unrealised_pnl": 674.9
+      "opened_at": "2026-11-06T11:39:22.790595",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "f50747f6",
+      "ticker": "COALINDIA.NS",
+      "entry": 391.54,
+      "stop_loss": 383.33,
+      "target": 409.74098556011063,
+      "qty": 46,
+      "capital_used": 18010.84,
+      "rr": 2.22,
+      "status": "OPEN",
+      "opened_at": "2026-11-06T11:39:23.491808",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "e20478c3",
+      "ticker": "BPCL.NS",
+      "entry": 306.65,
+      "stop_loss": 299.9,
+      "target": 322.0,
+      "qty": 45,
+      "capital_used": 13799.25,
+      "rr": 2.27,
+      "status": "OPEN",
+      "opened_at": "2026-11-06T11:39:24.134420",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -496,6 +496,57 @@
       "exit_reason": "TARGET_HIT",
       "pnl": 1056.0,
       "closed_at": "2026-11-03T11:26:04.298604"
+    },
+    {
+      "id": "a6077e87",
+      "ticker": "HCLTECH.NS",
+      "entry": 1387.4,
+      "stop_loss": 1363.74,
+      "target": 1467.5,
+      "qty": 13,
+      "capital_used": 18036.2,
+      "rr": 3.39,
+      "status": "CLOSED",
+      "opened_at": "2026-10-23T08:53:18.303885",
+      "unrealised_pnl": 560.3,
+      "exit_price": 1467.5,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 1041.3,
+      "closed_at": "2026-11-06T11:39:21.612988"
+    },
+    {
+      "id": "f68d660b",
+      "ticker": "INFY.NS",
+      "entry": 1109.2,
+      "stop_loss": 1070.58,
+      "target": 1197.800048828125,
+      "qty": 13,
+      "capital_used": 14419.6,
+      "rr": 2.29,
+      "status": "CLOSED",
+      "opened_at": "2026-10-23T08:53:18.461198",
+      "unrealised_pnl": 756.6,
+      "exit_price": 1197.8,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 1151.8,
+      "closed_at": "2026-11-06T11:39:21.871419"
+    },
+    {
+      "id": "925bc00d",
+      "ticker": "HINDALCO.NS",
+      "entry": 898.15,
+      "stop_loss": 882.03,
+      "target": 950.4000244140625,
+      "qty": 17,
+      "capital_used": 15268.55,
+      "rr": 3.24,
+      "status": "CLOSED",
+      "opened_at": "2026-11-03T11:26:05.124328",
+      "unrealised_pnl": 674.9,
+      "exit_price": 950.4,
+      "exit_reason": "TARGET_HIT",
+      "pnl": 888.25,
+      "closed_at": "2026-11-06T11:39:22.370497"
     }
   ]
 }
