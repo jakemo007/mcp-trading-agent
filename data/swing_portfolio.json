@@ -12,7 +12,7 @@
       "rr": 3.36,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.636207",
-      "unrealised_pnl": 132.0
+      "unrealised_pnl": -7.6
     },
     {
       "id": "f50747f6",
@@ -25,7 +25,7 @@
       "rr": 2.22,
       "status": "OPEN",
       "opened_at": "2026-11-06T11:39:23.491808",
-      "unrealised_pnl": 586.96
+      "unrealised_pnl": 550.16
     },
     {
       "id": "1c23c70f",
@@ -38,7 +38,7 @@
       "rr": 3.02,
       "status": "OPEN",
       "opened_at": "2026-11-09T12:14:54.215890",
-      "unrealised_pnl": 379.47
+      "unrealised_pnl": 259.35
     },
     {
       "id": "4d1c1b8f",
@@ -51,7 +51,7 @@
       "rr": 2.54,
       "status": "OPEN",
       "opened_at": "2026-11-11T11:30:12.431199",
-      "unrealised_pnl": 257.05
+      "unrealised_pnl": -246.45
     }
   ],
   "closed_trades": [
