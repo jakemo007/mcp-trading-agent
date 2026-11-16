@@ -1,0 +1,397 @@
+name: Intraday Trader
+
+# Replays the NSE session on paper after the close, updates the paper portfolio
+# on main and publishes the HTML report to the `reports` branch (GitHub Pages).
+# Guide: docs/intraday-trader/README.md
+
+on:
+  schedule:
+    # Daily replay at 16:00 IST = 10:30 UTC, Monday to Friday (NSE closes at 15:30 IST)
+    - cron: "30 10 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What to run"
+        required: false
+        default: "daily"
+        type: choice
+        options: ["daily", "backtest"]
+      date:
+        description: "Session date YYYY-MM-DD (daily only; blank = latest session)"
+        required: false
+        default: ""
+        type: string
+      days:
+        description: "Sessions to replay, 1-60 (backtest only)"
+        required: false
+        default: "30"
+        type: string
+      dry_run:
+        description: "Dry run (nothing committed or published; report attached to the run)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+      force:
+        description: "Re-run a date that is already recorded (daily only)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+# Own group on purpose: the swing workflow queues a job every 30 minutes in its
+# group, and a newly queued run there would cancel one of ours while it waits.
+concurrency:
+  group: intraday-trader
+  cancel-in-progress: false
+
+jobs:
+  trade:
+    name: Replay session and publish report
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    # Inputs reach the scripts only through these variables, never by being
+    # pasted into a script. On the schedule trigger every input is empty.
+    env:
+      MODE: ${{ github.event.inputs.mode || 'daily' }}
+      SESSION_DATE_INPUT: ${{ github.event.inputs.date || '' }}
+      BACKTEST_DAYS: ${{ github.event.inputs.days || '30' }}
+      DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+      FORCE: ${{ github.event.inputs.force || 'false' }}
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Offline gate: a broken engine must not publish anything
+      - name: Run tests
+        run: python -m unittest discover -s tests -p "test_intraday_*.py"
+
+      - name: Run intraday trader
+        id: run
+        run: |
+          set -euo pipefail
+          RESULT="$RUNNER_TEMP/result.json"
+
+          case "$MODE" in
+            daily|backtest) ;;
+            *) echo "::error::mode must be 'daily' or 'backtest'"; exit 1 ;;
+          esac
+
+          args=()
+          if [ "$MODE" = "backtest" ]; then
+            days="${BACKTEST_DAYS//[[:space:]]/}"
+            if ! [[ "$days" =~ ^[0-9]{1,2}$ ]] || [ "$((10#$days))" -lt 1 ] || [ "$((10#$days))" -gt 60 ]; then
+              echo "::error::days must be a whole number from 1 to 60"
+              exit 1
+            fi
+            args=(backtest --days "$((10#$days))" --json)
+          else
+            args=(run --json)
+            session="${SESSION_DATE_INPUT//[[:space:]]/}"
+            if [ -n "$session" ]; then
+              if ! [[ "$session" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+                echo "::error::date must be YYYY-MM-DD"
+                exit 1
+              fi
+              args+=(--date "$session")
+            fi
+            if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+            if [ "$FORCE" = "true" ]; then args+=(--force); fi
+          fi
+
+          echo "Running: python -m intraday_trader ${args[*]}"
+          code=0
+          python -m intraday_trader "${args[@]}" > "$RESULT" || code=$?
+
+          echo "--- result.json ---"
+          cat "$RESULT" || true
+          echo
+
+          field() {
+            python -c 'import json,sys; v=json.load(open(sys.argv[1], encoding="utf-8")).get(sys.argv[2]); print("" if v is None else v)' "$RESULT" "$1" 2>/dev/null || true
+          }
+
+          status="$(field status)"
+          report_path="$(field report_path)"
+          report_file="${report_path##*/}"
+          if [ "$MODE" = "backtest" ]; then
+            # A backtest result has no session date: take the date in the report's file name
+            label_date="$(printf '%s' "$report_file" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -n 1 || true)"
+          else
+            label_date="$(field date)"
+          fi
+
+          # Only well-formed values become step outputs
+          if ! [[ "$status" =~ ^[a-z_]+$ ]]; then status="unknown"; fi
+          if ! [[ "$label_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then label_date=""; fi
+          if ! [[ "$report_file" =~ ^INTRADAY-[A-Za-z0-9._-]+\.html$ ]]; then report_file=""; fi
+          {
+            echo "status=$status"
+            echo "date=$label_date"
+            echo "report_file=$report_file"
+          } >> "$GITHUB_OUTPUT"
+
+          # Exit codes of the CLI: 0 = ok / already_recorded (holiday: green run,
+          # nothing published), 2 = no data could be downloaded, 1 = crash.
+          if [ "$code" -ne 0 ]; then
+            echo "::error::intraday_trader exited with code ${code} (status: ${status})"
+            exit "$code"
+          fi
+
+      - name: Commit portfolio state to main
+        id: commit
+        if: steps.run.outputs.status == 'ok' && env.MODE == 'daily' && env.DRY_RUN != 'true' && github.ref == 'refs/heads/main'
+        env:
+          SESSION_DATE: ${{ steps.run.outputs.date }}
+        run: |
+          set -euo pipefail
+          if [ -z "$SESSION_DATE" ]; then
+            echo "::error::result.json carried no session date"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/intraday_portfolio.json
+          if git diff --cached --quiet; then
+            echo "Portfolio unchanged: nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore: intraday portfolio update ${SESSION_DATE}"
+
+          # The swing workflow also pushes to main: rebase on top of it and retry
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "Portfolio pushed to main (attempt ${attempt})."
+              exit 0
+            fi
+            echo "Push attempt ${attempt} failed."
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the portfolio to main after 3 attempts"
+          exit 1
+
+      - name: Publish report to reports branch
+        id: publish
+        if: steps.run.outputs.status == 'ok' && env.DRY_RUN != 'true' && github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABEL_DATE: ${{ steps.run.outputs.date }}
+        run: |
+          set -euo pipefail
+          SITE="$RUNNER_TEMP/site"
+          REMOTE_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
+          if [ -z "$LABEL_DATE" ]; then LABEL_DATE="$(date -u +%Y-%m-%d)"; fi
+          if [ "$MODE" = "backtest" ]; then
+            MESSAGE="report: intraday backtest ${LABEL_DATE}"
+          else
+            MESSAGE="report: intraday ${LABEL_DATE}"
+          fi
+
+          # Freshly generated files; dry-run output is never published
+          shopt -s nullglob
+          files=()
+          for f in data/reports/INTRADAY-DAILY-*.html data/reports/INTRADAY-DAILY-*.json \
+                   data/reports/INTRADAY-BACKTEST-*.html data/reports/INTRADAY-BACKTEST-*.json; do
+            case "$f" in
+              *-DRYRUN*) continue ;;
+            esac
+            files+=("$f")
+          done
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "::error::The run reported status ok but wrote no report files"
+            exit 1
+          fi
+          printf 'Publishing: %s\n' "${files[@]}"
+
+          # One attempt: start from the latest remote `reports`, add our files,
+          # rebuild the index, push. Runs in a subshell with errexit on.
+          publish_once() {
+            rm -rf "$SITE"
+            rc=0
+            git ls-remote --exit-code --heads "$REMOTE_URL" reports >/dev/null 2>&1 || rc=$?
+            if [ "$rc" -eq 0 ]; then
+              git clone --quiet --depth 1 --branch reports "$REMOTE_URL" "$SITE"
+            elif [ "$rc" -eq 2 ]; then
+              echo "No reports branch yet: creating it as an orphan."
+              git init --quiet --initial-branch=reports "$SITE"
+              git -C "$SITE" remote add origin "$REMOTE_URL"
+            else
+              echo "Could not reach the remote (git ls-remote exit ${rc})."
+              return 1
+            fi
+
+            mkdir -p "$SITE/data/reports"
+            cp -f "${files[@]}" "$SITE/data/reports/"
+            touch "$SITE/.nojekyll"
+            python intraday_trader/site_index.py "$SITE" \
+              --portfolio data/intraday_portfolio.json --repo "$GITHUB_REPOSITORY"
+
+            git -C "$SITE" config user.name "github-actions[bot]"
+            git -C "$SITE" config user.email "github-actions[bot]@users.noreply.github.com"
+            git -C "$SITE" add -A
+            if git -C "$SITE" diff --cached --quiet; then
+              echo "Reports site already up to date."
+              return 0
+            fi
+            git -C "$SITE" commit --quiet -m "$MESSAGE"
+            git -C "$SITE" push --quiet origin HEAD:refs/heads/reports
+          }
+
+          # The swing workflow pushes to `reports` on Fridays. A rejected push
+          # is retried on top of whatever is there now, so nothing is lost.
+          published=false
+          for attempt in 1 2 3; do
+            set +e
+            ( set -e; publish_once )
+            rc=$?
+            set -e
+            if [ "$rc" -eq 0 ]; then
+              published=true
+              echo "Publish finished (attempt ${attempt})."
+              break
+            fi
+            echo "Publish attempt ${attempt} failed (exit ${rc})."
+            sleep $((attempt * 5))
+          done
+          if [ "$published" != "true" ]; then
+            echo "::error::Could not publish to the reports branch after 3 attempts"
+            exit 1
+          fi
+
+      - name: Upload reports as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: intraday-reports
+          path: data/reports/INTRADAY-*
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Job summary
+        if: always()
+        env:
+          RUN_STATUS: ${{ steps.run.outputs.status }}
+          REPORT_FILE: ${{ steps.run.outputs.report_file }}
+          COMMIT_OUTCOME: ${{ steps.commit.outcome }}
+          PUBLISH_OUTCOME: ${{ steps.publish.outcome }}
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          import os
+
+
+          def money(value, signed=False):
+              try:
+                  value = float(value)
+              except (TypeError, ValueError):
+                  return "n/a"
+              body = "₹{:,.2f}".format(abs(value))
+              if signed:
+                  return ("+" if value >= 0 else "-") + body
+              return ("-" if value < 0 else "") + body
+
+
+          def show(value):
+              return "n/a" if value is None or value == "" else str(value)
+
+
+          env = os.environ.get
+          mode = env("MODE", "daily")
+          lines = ["## Intraday Trader: {}".format(mode), ""]
+
+          try:
+              with open(os.path.join(env("RUNNER_TEMP", ""), "result.json"), encoding="utf-8") as fh:
+                  result = json.load(fh)
+              if not isinstance(result, dict):
+                  result = {}
+          except Exception:
+              result = {}
+
+          status = result.get("status") or env("RUN_STATUS") or "unknown"
+          dry_run = env("DRY_RUN") == "true"
+          on_main = env("GITHUB_REF") == "refs/heads/main"
+          published = env("PUBLISH_OUTCOME") == "success"
+          committed = env("COMMIT_OUTCOME") == "success"
+
+          owner, _, name = env("GITHUB_REPOSITORY", "").partition("/")
+          site = "https://{}.github.io/{}/".format(owner.lower(), name) if owner and name else ""
+
+          rows = [("Status", "`{}`".format(status))]
+          try:
+              if status == "ok" and mode == "backtest":
+                  summary = result.get("summary") or {}
+                  rows += [
+                      ("Period", "{} to {}".format(show(result.get("first_date")), show(result.get("last_date")))),
+                      ("Sessions replayed", "{} (requested {})".format(
+                          show(result.get("actual_days")), show(result.get("requested_days")))),
+                      ("Trades", "{} ({} wins / {} losses)".format(
+                          show(summary.get("n_trades")), show(summary.get("wins")), show(summary.get("losses")))),
+                      ("Win rate", "{}%".format(show(summary.get("win_rate_pct")))),
+                      ("Net P&L", money(summary.get("net_pnl"), signed=True)),
+                      ("Capital", money(summary.get("capital"))),
+                  ]
+              elif status == "ok":
+                  rows += [
+                      ("Session date", show(result.get("date"))),
+                      ("Stocks in play", show(result.get("watchlist"))),
+                      ("Trades", "{} ({} wins / {} losses)".format(
+                          show(result.get("n_trades")), show(result.get("wins")), show(result.get("losses")))),
+                      ("Net P&L", money(result.get("net_pnl"), signed=True)),
+                      ("Capital", "{} → {}".format(
+                          money(result.get("start_capital")), money(result.get("end_capital")))),
+                  ]
+                  if result.get("partial"):
+                      rows.append(("Note", "Partial session: the data did not cover the whole day"))
+              elif result.get("date"):
+                  rows.append(("Session date", show(result.get("date"))))
+          except Exception as exc:  # the summary must never break the run
+              rows.append(("Summary error", str(exc)))
+
+          lines += ["| | |", "|---|---|"]
+          lines += ["| {} | {} |".format(key, value) for key, value in rows]
+          lines.append("")
+
+          if not result:
+              lines.append("The trader produced no readable result. See the **Run intraday trader** step log.")
+          elif status == "already_recorded":
+              lines.append("No new session to trade: a market holiday or weekend, or this session is "
+                           "already recorded. Nothing was committed or published.")
+          elif status == "no_data":
+              lines.append("No market data could be downloaded. Nothing was committed or published.")
+          elif status == "ok" and dry_run:
+              lines.append("Dry run: the portfolio was not updated and nothing was published. "
+                           "The report is attached to this run as the `intraday-reports` artifact.")
+          elif status == "ok" and not on_main:
+              lines.append("This run was not on `main`, so nothing was committed or published. "
+                           "The report is attached to this run as the `intraday-reports` artifact.")
+          elif status == "ok":
+              if mode == "daily":
+                  lines.append("Portfolio committed to `main`: {}.".format("yes" if committed else "**no**"))
+              if published and site:
+                  report_file = env("REPORT_FILE", "")
+                  if report_file:
+                      lines.append("Report: {}data/reports/{}".format(site, report_file))
+                  lines.append("All reports: {}".format(site))
+              else:
+                  lines.append("**The report was not published.** See the **Publish report to reports branch** step log.")
+
+          print("\n".join(lines))
+          PY

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="458" viewBox="0 0 880 458" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">Swing points and a break of structure</title>
+<desc id="d">Daily candles. A swing high forms at 607.50, the highest high of five candles. Price pulls back to a swing low at 599.80. A later candle spikes to 608.20 but closes at 606.60, below the swing high: a wick only, not a break. Two candles later a candle closes at 609.10, above 607.50: a break of structure, and the bias turns bullish.</desc>
+<rect x="0.5" y="0.5" width="879" height="457" rx="12" fill="#0d1117" stroke="#30363d"/>
+<text x="24.0" y="36.0" font-size="17" fill="#e6edf3" font-weight="600">Swing points and a break of structure</text>
+<line x1="29.0" y1="49.0" x2="29.0" y2="65.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="25.0" y="52.0" width="8.0" height="10.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<text x="41.0" y="62.0" font-size="12" fill="#9aa4af">up candle (hollow)</text>
+<line x1="181.4" y1="49.0" x2="181.4" y2="65.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="177.4" y="52.0" width="8.0" height="10.0" fill="#c9d1d9" stroke="#c9d1d9" stroke-width="1.5"/>
+<text x="193.4" y="62.0" font-size="12" fill="#9aa4af">down candle (filled)</text>
+<line x1="341.4" y1="58.0" x2="367.4" y2="58.0" stroke="#e9c84f" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="374.4" y="62.0" font-size="12" fill="#9aa4af">swing level, where stop orders rest</text>
+<line x1="64.0" y1="311.0" x2="856.0" y2="311.0" stroke="#21262d" stroke-width="1"/>
+<text x="56.0" y="315.0" font-size="12" fill="#9aa4af" text-anchor="end">600</text>
+<line x1="64.0" y1="251.0" x2="856.0" y2="251.0" stroke="#21262d" stroke-width="1"/>
+<text x="56.0" y="255.0" font-size="12" fill="#9aa4af" text-anchor="end">604</text>
+<line x1="64.0" y1="191.0" x2="856.0" y2="191.0" stroke="#21262d" stroke-width="1"/>
+<text x="56.0" y="195.0" font-size="12" fill="#9aa4af" text-anchor="end">608</text>
+<line x1="64.0" y1="131.0" x2="856.0" y2="131.0" stroke="#21262d" stroke-width="1"/>
+<text x="56.0" y="135.0" font-size="12" fill="#9aa4af" text-anchor="end">612</text>
+<line x1="280.0" y1="198.5" x2="850.0" y2="198.5" stroke="#e9c84f" stroke-width="2" stroke-dasharray="7 5"/>
+<line x1="448.0" y1="314.0" x2="694.0" y2="314.0" stroke="#e9c84f" stroke-width="2" stroke-dasharray="7 5"/>
+<line x1="112.0" y1="303.5" x2="112.0" y2="353.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="100.0" y="311.0" width="24.0" height="30.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="168.0" y1="266.0" x2="168.0" y2="320.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="156.0" y="275.0" width="24.0" height="36.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="224.0" y1="233.0" x2="224.0" y2="287.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="212.0" y="242.0" width="24.0" height="33.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="280.0" y1="198.5" x2="280.0" y2="254.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="268.0" y="218.0" width="24.0" height="24.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="336.0" y1="212.0" x2="336.0" y2="266.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="324.0" y="218.0" width="24.0" height="39.0" fill="#c9d1d9" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="392.0" y1="245.0" x2="392.0" y2="296.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="380.0" y="257.0" width="24.0" height="30.0" fill="#c9d1d9" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="448.0" y1="272.0" x2="448.0" y2="314.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="436.0" y="287.0" width="24.0" height="15.0" fill="#c9d1d9" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="504.0" y1="254.0" x2="504.0" y2="305.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="492.0" y="263.0" width="24.0" height="39.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="560.0" y1="227.0" x2="560.0" y2="275.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="548.0" y="236.0" width="24.0" height="27.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="616.0" y1="188.0" x2="616.0" y2="242.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="604.0" y="212.0" width="24.0" height="24.0" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="672.0" y1="206.0" x2="672.0" y2="239.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="660.0" y="212.0" width="24.0" height="18.0" fill="#c9d1d9" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="728.0" y1="167.0" x2="728.0" y2="236.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="716.0" y="174.5" width="24.0" height="55.5" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<line x1="784.0" y1="149.0" x2="784.0" y2="188.0" stroke="#c9d1d9" stroke-width="1.5"/>
+<rect x="772.0" y="158.0" width="24.0" height="16.5" fill="#0d1117" stroke="#c9d1d9" stroke-width="1.5"/>
+<text x="260.0" y="191.5" font-size="13" xml:space="preserve" text-anchor="end"><tspan fill="#e6edf3" font-weight="600">swing high </tspan><tspan fill="#e6edf3" font-weight="600">607.50</tspan></text>
+<line x1="154.0" y1="150.0" x2="406.0" y2="150.0" stroke="#9aa4af" stroke-width="1"/>
+<line x1="154.0" y1="150.0" x2="154.0" y2="157.0" stroke="#9aa4af" stroke-width="1"/>
+<line x1="406.0" y1="150.0" x2="406.0" y2="157.0" stroke="#9aa4af" stroke-width="1"/>
+<text x="280.0" y="142.0" font-size="12" fill="#9aa4af" text-anchor="middle">highest high of 5 candles: 2 lower on each side</text>
+<text x="436.0" y="332.0" font-size="13" xml:space="preserve"><tspan fill="#e6edf3" font-weight="600">swing low </tspan><tspan fill="#e6edf3" font-weight="600">599.80</tspan><tspan fill="#9aa4af">  lowest low of 5 candles</tspan></text>
+<text x="596.0" y="124.0" font-size="13" fill="#e6edf3" font-weight="600" text-anchor="end">wick only: not a break</text>
+<text x="596.0" y="141.0" font-size="12" fill="#9aa4af" text-anchor="end">high 608.20, but the close is 606.60</text>
+<line x1="600.0" y1="132.0" x2="616.0" y2="132.0" stroke="#9aa4af" stroke-width="1.2"/>
+<line x1="616.0" y1="132.0" x2="616.0" y2="179.0" stroke="#9aa4af" stroke-width="1.2"/>
+<polygon points="612.0,178.0 620.0,178.0 616.0,185.0" fill="#9aa4af"/>
+<text x="852.0" y="100.0" font-size="13" fill="#e6edf3" font-weight="600" text-anchor="end">close above: break of structure (BOS)</text>
+<text x="852.0" y="117.0" font-size="12" fill="#9aa4af" text-anchor="end">close 609.10 is above 607.50, bias turns bullish</text>
+<line x1="728.0" y1="124.0" x2="728.0" y2="158.0" stroke="#9aa4af" stroke-width="1.2"/>
+<polygon points="724.0,157.0 732.0,157.0 728.0,164.0" fill="#9aa4af"/>
+<line x1="702.0" y1="174.5" x2="714.0" y2="174.5" stroke="#e6edf3" stroke-width="2"/>
+<text x="698.0" y="178.5" font-size="12" fill="#e6edf3" text-anchor="end">close</text>
+<text x="64.0" y="392.0" font-size="12" fill="#9aa4af">each candle is one day</text>
+<rect x="64.0" y="404.0" width="650.0" height="26.0" fill="#161b22" stroke="#30363d" stroke-width="1" rx="4"/>
+<text x="76.0" y="421.0" font-size="12" fill="#9aa4af">before the break: the earlier bias stays in force</text>
+<rect x="714.0" y="404.0" width="142.0" height="26.0" fill="#e6edf3" fill-opacity="0.14" stroke="#e6edf3" stroke-width="1.2" rx="4"/>
+<text x="785.0" y="421.0" font-size="12.5" fill="#e6edf3" font-weight="700" text-anchor="middle">bias: BULLISH</text>
+<text x="64.0" y="447.0" font-size="12" fill="#9aa4af">It stays bullish until a later candle closes below the most recent swing low.</text>
+</svg>
