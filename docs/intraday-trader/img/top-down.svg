@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="446" viewBox="0 0 880 446" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<title id="t">Top-down analysis from weekly to 5-minute</title>
+<desc id="d">Four stacked bands that narrow downward. Weekly: is the big picture against me, answered by the direction of the last weekly break of structure. Daily: which way has the stock been trending, answered by the last daily break of structure. 1-hour: which way is it moving today, answered by the last 1-hour break of structure. 5-minute: exactly where do I get in, answered by the entry model. Alignment rule: the 1-hour and daily must agree, and the weekly must not oppose.</desc>
+<rect x="0.5" y="0.5" width="879" height="445" rx="12" fill="#0d1117" stroke="#30363d"/>
+<text x="24.0" y="36.0" font-size="17" fill="#e6edf3" font-weight="600">Top-down analysis: weekly to 5-minute</text>
+<text x="24.0" y="58.0" font-size="13" fill="#9aa4af">Big timeframes choose the direction. The smallest one times the entry.</text>
+<polygon points="34.0,158.0 566.0,158.0 532.0,170.0 68.0,170.0" fill="#21262d"/>
+<rect x="24.0" y="90.0" width="552.0" height="68.0" fill="#161b22" stroke="#6e7681" stroke-width="1.2" rx="8"/>
+<text x="44.0" y="114.0" font-size="13" fill="#e6edf3" font-weight="700" letter-spacing="0.6">WEEKLY</text>
+<text x="44.0" y="134.0" font-size="13.5" fill="#e6edf3">Is the big picture against me?</text>
+<text x="44.0" y="150.0" font-size="12" fill="#9aa4af">Answered by: direction of the last weekly break of structure</text>
+<polygon points="68.0,238.0 532.0,238.0 498.0,250.0 102.0,250.0" fill="#21262d"/>
+<rect x="58.0" y="170.0" width="484.0" height="68.0" fill="#161b22" stroke="#6e7681" stroke-width="1.2" rx="8"/>
+<text x="78.0" y="194.0" font-size="13" fill="#e6edf3" font-weight="700" letter-spacing="0.6">DAILY</text>
+<text x="78.0" y="214.0" font-size="13.5" fill="#e6edf3">Which way has the stock been trending?</text>
+<text x="78.0" y="230.0" font-size="12" fill="#9aa4af">Answered by: direction of the last daily break of structure</text>
+<polygon points="102.0,318.0 498.0,318.0 464.0,330.0 136.0,330.0" fill="#21262d"/>
+<rect x="92.0" y="250.0" width="416.0" height="68.0" fill="#161b22" stroke="#6e7681" stroke-width="1.2" rx="8"/>
+<text x="112.0" y="274.0" font-size="13" fill="#e6edf3" font-weight="700" letter-spacing="0.6">1-HOUR</text>
+<text x="112.0" y="294.0" font-size="13.5" fill="#e6edf3">Which way is it moving today?</text>
+<text x="112.0" y="310.0" font-size="12" fill="#9aa4af">Answered by: direction of the last 1-hour break of structure</text>
+<rect x="126.0" y="330.0" width="348.0" height="68.0" fill="#161b22" stroke="#6e7681" stroke-width="1.2" rx="8"/>
+<text x="146.0" y="354.0" font-size="13" fill="#e6edf3" font-weight="700" letter-spacing="0.6">5-MINUTE</text>
+<text x="146.0" y="374.0" font-size="13.5" fill="#e6edf3">Exactly where do I get in?</text>
+<text x="146.0" y="390.0" font-size="12" fill="#9aa4af">Answered by: the six-check entry model (Step 4)</text>
+<text x="604.0" y="80.0" font-size="12" fill="#9aa4af" font-weight="600" letter-spacing="0.6">THE ALIGNMENT RULE</text>
+<line x1="576.0" y1="124.0" x2="596.0" y2="124.0" stroke="#9aa4af" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="604.0" y="121.0" font-size="13" fill="#e6edf3" font-weight="600">Weekly must not oppose</text>
+<text x="604.0" y="138.0" font-size="12" fill="#9aa4af">a veto only: neutral is fine</text>
+<line x1="542.0" y1="204.0" x2="596.0" y2="204.0" stroke="#9aa4af" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="508.0" y1="284.0" x2="596.0" y2="284.0" stroke="#9aa4af" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="596.0" y1="204.0" x2="596.0" y2="284.0" stroke="#e6edf3" stroke-width="1.5"/>
+<line x1="596.0" y1="244.0" x2="604.0" y2="244.0" stroke="#e6edf3" stroke-width="1.5"/>
+<text x="610.0" y="216.0" font-size="13" fill="#e6edf3" font-weight="600">1-hour and daily</text>
+<text x="610.0" y="233.0" font-size="13" fill="#e6edf3" font-weight="600">must agree</text>
+<text x="610.0" y="252.0" font-size="12" fill="#9aa4af">both bullish: longs only</text>
+<text x="610.0" y="268.0" font-size="12" fill="#9aa4af">both bearish: shorts only</text>
+<text x="610.0" y="284.0" font-size="12" fill="#9aa4af">anything else: stand aside</text>
+<line x1="474.0" y1="364.0" x2="596.0" y2="364.0" stroke="#9aa4af" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="604.0" y="361.0" font-size="13" fill="#e6edf3" font-weight="600">5-minute times the entry</text>
+<text x="604.0" y="378.0" font-size="12" fill="#9aa4af">only in the allowed direction</text>
+<text x="24.0" y="428.0" font-size="13" xml:space="preserve"><tspan fill="#e6edf3" font-weight="700">Rule: </tspan><tspan fill="#e6edf3">the 1-hour and daily must agree; the weekly must not oppose.</tspan></text>
+</svg>

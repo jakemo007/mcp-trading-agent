@@ -15,3 +15,8 @@ build/
 # IDE
 .vscode/
 .idea/
+
+# Intraday trader: daily and backtest reports are published to the `reports`
+# branch (GitHub Pages) by the workflow, not committed to main
+data/reports/INTRADAY-*.html
+data/reports/INTRADAY-*.json
