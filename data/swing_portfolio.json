@@ -1,5 +1,5 @@
 {
-  "capital": 49234.37,
+  "capital": 45883.21,
   "open_positions": [
     {
       "id": "0a3e5c52",
@@ -12,7 +12,7 @@
       "rr": 3.36,
       "status": "OPEN",
       "opened_at": "2026-10-23T08:53:18.636207",
-      "unrealised_pnl": -11.2
+      "unrealised_pnl": -119.6
     },
     {
       "id": "f50747f6",
@@ -25,32 +25,32 @@
       "rr": 2.22,
       "status": "OPEN",
       "opened_at": "2026-11-06T11:39:23.491808",
-      "unrealised_pnl": 0.46
+      "unrealised_pnl": -162.84
     },
     {
-      "id": "4d1c1b8f",
+      "id": "63b0cb34",
+      "ticker": "NTPC.NS",
+      "entry": 324.6,
+      "stop_loss": 320.19,
+      "target": 333.8500061035156,
+      "qty": 62,
+      "capital_used": 20125.2,
+      "rr": 2.1,
+      "status": "OPEN",
+      "opened_at": "2026-11-18T12:22:29.852003",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "488199b3",
       "ticker": "BPCL.NS",
       "entry": 306.65,
-      "stop_loss": 300.25,
+      "stop_loss": 300.94,
       "target": 322.8999938964844,
-      "qty": 53,
-      "capital_used": 16252.45,
-      "rr": 2.54,
+      "qty": 49,
+      "capital_used": 15025.85,
+      "rr": 2.85,
       "status": "OPEN",
-      "opened_at": "2026-11-11T11:30:12.431199",
-      "unrealised_pnl": -45.05
-    },
-    {
-      "id": "f721d988",
-      "ticker": "TATASTEEL.NS",
-      "entry": 183.83,
-      "stop_loss": 180.91,
-      "target": 194.0,
-      "qty": 88,
-      "capital_used": 16177.04,
-      "rr": 3.48,
-      "status": "OPEN",
-      "opened_at": "2026-11-17T12:34:14.478606",
+      "opened_at": "2026-11-18T12:22:30.074488",
       "unrealised_pnl": 0.0
     }
   ],
@@ -598,6 +598,40 @@
       "exit_reason": "SL_HIT",
       "pnl": -306.67,
       "closed_at": "2026-11-17T12:34:14.049360"
+    },
+    {
+      "id": "4d1c1b8f",
+      "ticker": "BPCL.NS",
+      "entry": 306.65,
+      "stop_loss": 300.25,
+      "target": 322.8999938964844,
+      "qty": 53,
+      "capital_used": 16252.45,
+      "rr": 2.54,
+      "status": "CLOSED",
+      "opened_at": "2026-11-11T11:30:12.431199",
+      "unrealised_pnl": -45.05,
+      "exit_price": 300.25,
+      "exit_reason": "SL_HIT",
+      "pnl": -339.2,
+      "closed_at": "2026-11-18T12:22:28.981766"
+    },
+    {
+      "id": "f721d988",
+      "ticker": "TATASTEEL.NS",
+      "entry": 183.83,
+      "stop_loss": 180.91,
+      "target": 194.0,
+      "qty": 88,
+      "capital_used": 16177.04,
+      "rr": 3.48,
+      "status": "CLOSED",
+      "opened_at": "2026-11-17T12:34:14.478606",
+      "unrealised_pnl": 0.0,
+      "exit_price": 180.53,
+      "exit_reason": "SL_HIT",
+      "pnl": -290.4,
+      "closed_at": "2026-11-18T12:22:29.122376"
     }
   ]
 }
