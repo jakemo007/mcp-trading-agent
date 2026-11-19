@@ -1,19 +1,6 @@
 {
-  "capital": 45883.21,
+  "capital": 42321.23,
   "open_positions": [
-    {
-      "id": "0a3e5c52",
-      "ticker": "TCS.NS",
-      "entry": 2409.4,
-      "stop_loss": 2345.22,
-      "target": 2625.0,
-      "qty": 4,
-      "capital_used": 9637.6,
-      "rr": 3.36,
-      "status": "OPEN",
-      "opened_at": "2026-10-23T08:53:18.636207",
-      "unrealised_pnl": -119.6
-    },
     {
       "id": "f50747f6",
       "ticker": "COALINDIA.NS",
@@ -25,20 +12,7 @@
       "rr": 2.22,
       "status": "OPEN",
       "opened_at": "2026-11-06T11:39:23.491808",
-      "unrealised_pnl": -162.84
-    },
-    {
-      "id": "63b0cb34",
-      "ticker": "NTPC.NS",
-      "entry": 324.6,
-      "stop_loss": 320.19,
-      "target": 333.8500061035156,
-      "qty": 62,
-      "capital_used": 20125.2,
-      "rr": 2.1,
-      "status": "OPEN",
-      "opened_at": "2026-11-18T12:22:29.852003",
-      "unrealised_pnl": 0.0
+      "unrealised_pnl": -1.84
     },
     {
       "id": "488199b3",
@@ -51,6 +25,32 @@
       "rr": 2.85,
       "status": "OPEN",
       "opened_at": "2026-11-18T12:22:30.074488",
+      "unrealised_pnl": 71.05
+    },
+    {
+      "id": "635e63da",
+      "ticker": "TATASTEEL.NS",
+      "entry": 183.83,
+      "stop_loss": 181.04,
+      "target": 194.0,
+      "qty": 102,
+      "capital_used": 18750.66,
+      "rr": 3.65,
+      "status": "OPEN",
+      "opened_at": "2026-11-19T12:16:40.564633",
+      "unrealised_pnl": 0.0
+    },
+    {
+      "id": "1ce747e5",
+      "ticker": "NTPC.NS",
+      "entry": 324.6,
+      "stop_loss": 320.12,
+      "target": 333.8500061035156,
+      "qty": 43,
+      "capital_used": 13957.8,
+      "rr": 2.06,
+      "status": "OPEN",
+      "opened_at": "2026-11-19T12:16:41.404017",
       "unrealised_pnl": 0.0
     }
   ],
@@ -632,6 +632,40 @@
       "exit_reason": "SL_HIT",
       "pnl": -290.4,
       "closed_at": "2026-11-18T12:22:29.122376"
+    },
+    {
+      "id": "0a3e5c52",
+      "ticker": "TCS.NS",
+      "entry": 2409.4,
+      "stop_loss": 2345.22,
+      "target": 2625.0,
+      "qty": 4,
+      "capital_used": 9637.6,
+      "rr": 3.36,
+      "status": "CLOSED",
+      "opened_at": "2026-10-23T08:53:18.636207",
+      "unrealised_pnl": -119.6,
+      "exit_price": 2345.22,
+      "exit_reason": "SL_HIT",
+      "pnl": -256.72,
+      "closed_at": "2026-11-19T12:16:38.864755"
+    },
+    {
+      "id": "63b0cb34",
+      "ticker": "NTPC.NS",
+      "entry": 324.6,
+      "stop_loss": 320.19,
+      "target": 333.8500061035156,
+      "qty": 62,
+      "capital_used": 20125.2,
+      "rr": 2.1,
+      "status": "CLOSED",
+      "opened_at": "2026-11-18T12:22:29.852003",
+      "unrealised_pnl": 0.0,
+      "exit_price": 318.8,
+      "exit_reason": "SL_HIT",
+      "pnl": -359.6,
+      "closed_at": "2026-11-19T12:16:39.434748"
     }
   ]
 }
