@@ -1,5 +1,5 @@
 {
-  "capital": 40954.96,
+  "capital": 43722.38,
   "open_positions": [
     {
       "id": "488199b3",
@@ -12,7 +12,7 @@
       "rr": 2.85,
       "status": "OPEN",
       "opened_at": "2026-11-18T12:22:30.074488",
-      "unrealised_pnl": 161.7
+      "unrealised_pnl": 49.0
     },
     {
       "id": "f0a793d6",
@@ -25,20 +25,7 @@
       "rr": 3.38,
       "status": "OPEN",
       "opened_at": "2026-11-23T13:45:33.903568",
-      "unrealised_pnl": 627.44
-    },
-    {
-      "id": "44951b73",
-      "ticker": "IOC.NS",
-      "entry": 146.67,
-      "stop_loss": 144.49,
-      "target": 151.83999633789062,
-      "qty": 118,
-      "capital_used": 17307.06,
-      "rr": 2.37,
-      "status": "OPEN",
-      "opened_at": "2026-11-23T13:45:34.065428",
-      "unrealised_pnl": 132.16
+      "unrealised_pnl": 645.04
     },
     {
       "id": "f3ca9163",
@@ -51,7 +38,20 @@
       "rr": 3.93,
       "status": "OPEN",
       "opened_at": "2026-11-23T13:45:34.605557",
-      "unrealised_pnl": 280.2
+      "unrealised_pnl": 190.2
+    },
+    {
+      "id": "088e34cb",
+      "ticker": "NTPC.NS",
+      "entry": 324.6,
+      "stop_loss": 320.02,
+      "target": 333.8500061035156,
+      "qty": 44,
+      "capital_used": 14282.4,
+      "rr": 2.02,
+      "status": "OPEN",
+      "opened_at": "2026-11-26T13:17:38.860177",
+      "unrealised_pnl": 0.0
     }
   ],
   "closed_trades": [
@@ -751,6 +751,23 @@
       "exit_reason": "TARGET_HIT",
       "pnl": 656.14,
       "closed_at": "2026-11-23T13:45:33.100197"
+    },
+    {
+      "id": "44951b73",
+      "ticker": "IOC.NS",
+      "entry": 146.67,
+      "stop_loss": 144.49,
+      "target": 151.83999633789062,
+      "qty": 118,
+      "capital_used": 17307.06,
+      "rr": 2.37,
+      "status": "CLOSED",
+      "opened_at": "2026-11-23T13:45:34.065428",
+      "unrealised_pnl": 132.16,
+      "exit_price": 144.49,
+      "exit_reason": "SL_HIT",
+      "pnl": -257.24,
+      "closed_at": "2026-11-26T13:17:37.353275"
     }
   ]
 }
