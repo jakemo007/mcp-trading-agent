@@ -1,5 +1,5 @@
 {
-  "capital": 43722.38,
+  "capital": 44199.76,
   "open_positions": [
     {
       "id": "488199b3",
@@ -12,7 +12,7 @@
       "rr": 2.85,
       "status": "OPEN",
       "opened_at": "2026-11-18T12:22:30.074488",
-      "unrealised_pnl": 49.0
+      "unrealised_pnl": 93.1
     },
     {
       "id": "f0a793d6",
@@ -25,7 +25,7 @@
       "rr": 3.38,
       "status": "OPEN",
       "opened_at": "2026-11-23T13:45:33.903568",
-      "unrealised_pnl": 645.04
+      "unrealised_pnl": 755.04
     },
     {
       "id": "f3ca9163",
@@ -38,19 +38,19 @@
       "rr": 3.93,
       "status": "OPEN",
       "opened_at": "2026-11-23T13:45:34.605557",
-      "unrealised_pnl": 190.2
+      "unrealised_pnl": 2.4
     },
     {
-      "id": "088e34cb",
-      "ticker": "NTPC.NS",
-      "entry": 324.6,
-      "stop_loss": 320.02,
-      "target": 333.8500061035156,
-      "qty": 44,
-      "capital_used": 14282.4,
-      "rr": 2.02,
+      "id": "6d7dc2bb",
+      "ticker": "HINDALCO.NS",
+      "entry": 906.9,
+      "stop_loss": 886.79,
+      "target": 971.0,
+      "qty": 15,
+      "capital_used": 13603.5,
+      "rr": 3.19,
       "status": "OPEN",
-      "opened_at": "2026-11-26T13:17:38.860177",
+      "opened_at": "2026-11-27T13:14:55.498894",
       "unrealised_pnl": 0.0
     }
   ],
@@ -768,6 +768,23 @@
       "exit_reason": "SL_HIT",
       "pnl": -257.24,
       "closed_at": "2026-11-26T13:17:37.353275"
+    },
+    {
+      "id": "088e34cb",
+      "ticker": "NTPC.NS",
+      "entry": 324.6,
+      "stop_loss": 320.02,
+      "target": 333.8500061035156,
+      "qty": 44,
+      "capital_used": 14282.4,
+      "rr": 2.02,
+      "status": "CLOSED",
+      "opened_at": "2026-11-26T13:17:38.860177",
+      "unrealised_pnl": 0.0,
+      "exit_price": 320.02,
+      "exit_reason": "SL_HIT",
+      "pnl": -201.52,
+      "closed_at": "2026-11-27T13:14:54.760650"
     }
   ]
 }
